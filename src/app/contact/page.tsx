@@ -54,7 +54,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16">
+    <main className="mx-auto max-w-3xl px-6 pt-32 pb-16">
       <h1 className="text-3xl font-bold mb-6">お問い合わせ</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
