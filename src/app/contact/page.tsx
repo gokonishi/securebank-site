@@ -1,46 +1,15 @@
-import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import type { Metadata } from "next";
 
-export async function POST(req: Request) {
-  try {
-    const { company, name, email, phone, message } = await req.json();
+export const metadata: Metadata = {
+  title: "お問い合わせ | セキュアバンク株式会社",
+  description: "セキュアバンク株式会社へのお問い合わせページです。",
+};
 
-    if (!company || !name || !email || !message) {
-      return NextResponse.json(
-        { ok: false, error: "必須項目が不足しています。" },
-        { status: 400 }
-      );
-    }
-
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER,
-      replyTo: email,
-      subject: `【お問い合わせ】${company} / ${name}様`,
-      text: `
-会社名: ${company}
-お名前: ${name}
-メール: ${email}
-電話番号: ${phone || ""}
-お問い合わせ内容:
-${message}
-      `,
-    });
-
-    return NextResponse.json({ ok: true });
-  } catch (error) {
-    console.error("contact api error:", error);
-    return NextResponse.json(
-      { ok: false, error: "送信に失敗しました。" },
-      { status: 500 }
-    );
-  }
+export default function ContactPage() {
+  return (
+    <main className="mx-auto max-w-3xl px-6 py-16">
+      <h1 className="text-3xl font-bold">お問い合わせ</h1>
+      <p className="mt-4">お問い合わせフォームは現在調整中です。</p>
+    </main>
+  );
 }
