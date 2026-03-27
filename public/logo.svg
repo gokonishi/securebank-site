@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" width="220" height="48">
+  <!-- Shield shape -->
+  <path d="M22 3 L5 10.5 L5 26 C5 36 13.5 44.5 22 47 C30.5 44.5 39 36 39 26 L39 10.5 Z" fill="#2563eb"/>
+  <!-- Inner shield highlight -->
+  <path d="M22 6 L8 12.5 L8 26 C8 34 15 41 22 43.5 C29 41 36 34 36 26 L36 12.5 Z" fill="#1d4ed8"/>
+  <!-- Lock body -->
+  <rect x="15.5" y="24" width="13" height="10" rx="2" fill="white"/>
+  <!-- Lock shackle -->
+  <path d="M17.5 24 L17.5 20.5 C17.5 17.8 19.5 16 22 16 C24.5 16 26.5 17.8 26.5 20.5 L26.5 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Lock keyhole -->
+  <circle cx="22" cy="28.5" r="1.8" fill="#2563eb"/>
+  <rect x="21" y="28.5" width="2" height="3" rx="0.5" fill="#2563eb"/>
+  <!-- Text group -->
+  <text x="47" y="21" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="800" fill="white" letter-spacing="2">SECUREBANK</text>
+  <text x="48" y="36" font-family="Arial, Helvetica, sans-serif" font-size="8.5" fill="#93c5fd" letter-spacing="1.5">AI CYBER DEFENSE</text>
+</svg>
