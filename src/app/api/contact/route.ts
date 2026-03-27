@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+// @ts-ignore
 import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
