@@ -1,46 +1,46 @@
+import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
-    const { name, email, message } = body;
+    const { company, name, email, phone, message } = await req.json();
 
-    if (!name || !email || !message) {
-      return new Response(JSON.stringify({ error: "•K{€–Ú‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·B" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
+    if (!company || !name || !email || !message) {
+      return NextResponse.json(
+        { ok: false, error: "å¿…é ˆé …ç›®ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚" },
+        { status: 400 }
+      );
     }
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "gokonishi@gmail.com",
-        pass: process.env.GMAIL_APP_PASSWORD,
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASS,
       },
     });
 
     await transporter.sendMail({
-      from: "gokonishi@gmail.com",
+      from: process.env.GMAIL_USER,
+      to: process.env.GMAIL_USER,
       replyTo: email,
-      to: "gokonishi@gmail.com",
-      subject: "y‚¨–â‚¢‡‚í‚¹zƒZƒLƒ…ƒAEƒoƒ“ƒNƒTƒCƒg",
-      text: `–¼‘O: ${name}
-ƒ[ƒ‹: ${email}
-
-“à—e:
-${message}`,
+      subject: `ã€ãŠå•ã„åˆã‚ã›ã€‘${company} / ${name}æ§˜`,
+      text: `
+ä¼šç¤¾å: ${company}
+ãŠåå‰: ${name}
+ãƒ¡ãƒ¼ãƒ«: ${email}
+é›»è©±ç•ªå·: ${phone || ""}
+ãŠå•ã„åˆã‚ã›å†…å®¹:
+${message}
+      `,
     });
 
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+    return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error(error);
-    return new Response(JSON.stringify({ error: "ƒ[ƒ‹‘—M‚É¸”s‚µ‚Ü‚µ‚½B" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    console.error("contact api error:", error);
+    return NextResponse.json(
+      { ok: false, error: "é€ä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸã€‚" },
+      { status: 500 }
+    );
   }
 }
