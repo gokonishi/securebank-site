@@ -40,7 +40,7 @@ export default function LpProblem() {
           className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
         >
           <a
-            href="#cta"
+            href="https://8.219.75.117/login.html"
             className="inline-flex items-center justify-center px-6 py-3.5 bg-red-500 hover:bg-red-600 text-white font-bold text-sm rounded transition-colors duration-150"
           >
             自律型エンジンで診断を始める →

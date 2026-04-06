@@ -111,7 +111,7 @@ export default function LpHero() {
               className="flex flex-col sm:flex-row gap-4"
             >
               <a
-                href="#cta"
+                href="https://8.219.75.117/login.html"
                 className="inline-flex items-center justify-center px-6 py-3.5 bg-red-500 hover:bg-red-600 text-white font-bold text-sm rounded transition-colors duration-150"
               >
                 診断を今すぐ始める →
