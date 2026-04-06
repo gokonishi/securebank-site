@@ -89,7 +89,7 @@ export default function LpDifferentiation() {
             言語モデルの知識だけでは、複雑な状態遷移を伴うロジック脆弱性は検出できません。
             真の自律的な脆弱性攻撃（Exploit）には、
             <strong className="text-slate-300">静的解析・動的計装・探索的テスト・シンボリック実行</strong>を統合した
-            深い検証エンジンが不可欠です。これが BUGBANK RedTeam AI の設計思想です。
+            深い検証エンジンが不可欠です。これが SECUREBANK RedTeam AI の設計思想です。
           </p>
         </motion.div>
       </div>

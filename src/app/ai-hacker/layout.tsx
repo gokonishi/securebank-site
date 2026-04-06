@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "BUGBANK RedTeam AI | 自律型ペネトレーションテストエンジン",
+  title: "SECUREBANK RedTeam AI | 自律型ペネトレーションテストエンジン",
   description:
     "天才ハッカーの思考回路をAIがマシンの速度で実行。従来のペネトレーションテストが数週間かける工程を、わずかな時間とコストで実現する自律型セキュリティエンジン。",
 };

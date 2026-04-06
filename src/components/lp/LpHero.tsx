@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const terminalLines = [
-  { delay: 0,    color: "text-slate-500", text: "[+] BUGBANK Neural Network を初期化中..." },
+  { delay: 0,    color: "text-slate-500", text: "[+] SECUREBANK Neural Network を初期化中..." },
   { delay: 0.6,  color: "text-green-400", text: "[+] セキュアな C2 接続を確立... [OK]" },
   { delay: 1.2,  color: "text-yellow-400", text: "[!] RedTeam AI Engine v2.0 を起動中" },
   { delay: 1.8,  color: "text-cyan-400",  text: "[>] 攻撃対象の外部公開資産を列挙中..." },
@@ -99,7 +99,7 @@ export default function LpHero() {
               transition={{ duration: 0.55, delay: 0.25 }}
               className="text-slate-400 text-[17px] leading-[1.8] mb-10 max-w-lg"
             >
-              BUGBANK RedTeam AI は、次世代の完全自律型・攻撃的セキュリティエンジンです。
+              SECUREBANK RedTeam AI は、次世代の完全自律型・攻撃的セキュリティエンジンです。
               従来のペネトレーションテストが数週間かける工程を、
               わずかな時間とコストで実現します。
             </motion.p>
@@ -135,7 +135,7 @@ export default function LpHero() {
                 世界の脆弱性報告プログラムで有効性を実証済み
               </p>
               <div className="flex gap-3 flex-wrap">
-                {["HACKERONE VALIDATED", "BUGBANK SRC PROVEN"].map((badge) => (
+                {["HACKERONE VALIDATED", "SECUREBANK SRC PROVEN"].map((badge) => (
                   <span
                     key={badge}
                     className="px-4 py-2 border border-white/20 text-xs font-bold text-slate-300 tracking-widest"

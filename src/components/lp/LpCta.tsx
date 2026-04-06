@@ -44,7 +44,7 @@ export default function LpCta() {
           <p className="mt-6 text-xs text-slate-600">
             Powered by{" "}
             <a href="/" className="text-slate-500 hover:text-slate-300 transition-colors">
-              BUGBANK / SecureBank
+              SECUREBANK
             </a>
           </p>
         </motion.div>

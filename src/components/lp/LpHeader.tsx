@@ -19,7 +19,7 @@ export default function LpHeader() {
         {/* Logo */}
         <Link href="/ai-hacker" className="flex items-center gap-2">
           <span className="font-display font-extrabold text-lg tracking-tight text-white">
-            BUGBANK{" "}
+            SECUREBANK{" "}
           </span>
           <span className="font-display font-extrabold text-lg tracking-tight text-red-500">
             RedTeam AI
