@@ -1,0 +1,15 @@
+﻿{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "securebank.jp"
+        }
+      ],
+      "destination": "https://securebank.co.jp/$1",
+      "permanent": true
+    }
+  ]
+}
