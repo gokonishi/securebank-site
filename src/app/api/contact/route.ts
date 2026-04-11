@@ -23,7 +23,7 @@ export async function POST(req: Request) {
 
     await transporter.sendMail({
       from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER,
+      to: "info@securebank.jp",
       replyTo: email,
       subject: `【お問い合わせ】${company} / ${name}様`,
       text: `

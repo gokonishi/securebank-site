@@ -47,7 +47,7 @@ export default function Hero() {
               className="font-display text-[52px] md:text-[64px] lg:text-[68px] font-extrabold tracking-[-0.02em] text-brand-text leading-[1.05] mb-7"
             >
               あなたの会社も、<br />
-              すでに<span className="text-gradient">サイバー攻撃</span>の<br />
+              すでに<span className="text-gradient">AIサイバー攻撃</span>の<br />
               対象です。
             </motion.h1>
 
