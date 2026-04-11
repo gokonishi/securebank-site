@@ -35,6 +35,8 @@ export default function Footer() {
               {[
                 { href: "/", label: "トップ" },
                 { href: "/services", label: "サービス" },
+                { href: "/news", label: "お知らせ" },
+                { href: "/cyber-news", label: "サイバー攻撃ニュース" },
                 { href: "/company", label: "会社概要" },
                 { href: "/contact", label: "お問い合わせ" },
               ].map((l) => (

@@ -1,8 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
 
 export default function ContactPage() {
+  const router = useRouter();
   const [form, setForm] = useState({
     company: "",
     name: "",
@@ -12,16 +20,16 @@ export default function ContactPage() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setResult("");
+    setError("");
 
     try {
       const res = await fetch("/api/contact", {
@@ -35,41 +43,117 @@ export default function ContactPage() {
       const data = await res.json();
 
       if (data.ok) {
-        setResult("送信しました！");
-        setForm({
-          company: "",
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-        });
+        if (typeof window !== "undefined" && typeof window.gtag === "function") {
+          window.gtag("event", "close_convert_lead", {
+            event_category: "contact",
+            event_label: "form_submit",
+          });
+        }
+        router.push("/contact/thanks");
       } else {
-        setResult("送信に失敗しました");
+        setError("送信に失敗しました。しばらく経ってから再度お試しください。");
       }
-    } catch (error) {
-      setResult("エラーが発生しました");
+    } catch {
+      setError("エラーが発生しました。しばらく経ってから再度お試しください。");
     }
 
     setLoading(false);
   };
 
   return (
-    <main className="mx-auto max-w-3xl px-6 pt-32 pb-16">
-      <h1 className="text-3xl font-bold mb-6">お問い合わせ</h1>
+    <main className="mx-auto max-w-3xl px-6 pt-32 pb-24">
+      <h1 className="text-3xl font-bold mb-2 text-brand-text">お問い合わせ</h1>
+      <p className="text-brand-sub mb-8">
+        初回相談は無料です。担当者より2営業日以内にご連絡いたします。<br />
+        メールでのお問い合わせは{" "}
+        <a href="mailto:info@securebank.jp" className="text-brand-blue hover:underline">
+          info@securebank.jp
+        </a>{" "}
+        へどうぞ。
+      </p>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input name="company" placeholder="会社名" value={form.company} onChange={handleChange} className="w-full border p-2" />
-        <input name="name" placeholder="お名前" value={form.name} onChange={handleChange} className="w-full border p-2" />
-        <input name="email" placeholder="メールアドレス" value={form.email} onChange={handleChange} className="w-full border p-2" />
-        <input name="phone" placeholder="電話番号" value={form.phone} onChange={handleChange} className="w-full border p-2" />
-        <textarea name="message" placeholder="お問い合わせ内容" value={form.message} onChange={handleChange} className="w-full border p-2 h-32" />
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div>
+          <label className="block text-sm font-medium text-brand-text mb-1">
+            会社名 <span className="text-red-500">*</span>
+          </label>
+          <input
+            name="company"
+            placeholder="例：株式会社〇〇"
+            value={form.company}
+            onChange={handleChange}
+            required
+            className="w-full border border-brand-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue transition"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-brand-text mb-1">
+            お名前 <span className="text-red-500">*</span>
+          </label>
+          <input
+            name="name"
+            placeholder="例：山田 太郎"
+            value={form.name}
+            onChange={handleChange}
+            required
+            className="w-full border border-brand-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue transition"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-brand-text mb-1">
+            メールアドレス <span className="text-red-500">*</span>
+          </label>
+          <input
+            name="email"
+            type="email"
+            placeholder="例：yamada@example.com"
+            value={form.email}
+            onChange={handleChange}
+            required
+            className="w-full border border-brand-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue transition"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-brand-text mb-1">
+            電話番号
+          </label>
+          <input
+            name="phone"
+            type="tel"
+            placeholder="例：03-0000-0000"
+            value={form.phone}
+            onChange={handleChange}
+            className="w-full border border-brand-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue transition"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-brand-text mb-1">
+            お問い合わせ内容 <span className="text-red-500">*</span>
+          </label>
+          <textarea
+            name="message"
+            placeholder="ご質問・ご要望をご記入ください"
+            value={form.message}
+            onChange={handleChange}
+            required
+            className="w-full border border-brand-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/30 focus:border-brand-blue transition h-36 resize-none"
+          />
+        </div>
 
-        <button type="submit" disabled={loading} className="bg-blue-600 text-white px-4 py-2">
-          {loading ? "送信中..." : "送信"}
+        <button
+          type="submit"
+          disabled={loading}
+          className="btn-grad btn-pulse w-full disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          {loading ? "送信中..." : "送信する"}
         </button>
       </form>
 
-      {result && <p className="mt-4">{result}</p>}
+      {error && (
+        <p className="mt-4 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+          {error}
+        </p>
+      )}
     </main>
   );
 }
