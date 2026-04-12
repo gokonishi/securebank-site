@@ -20,7 +20,7 @@ interface CyberNewsArticle {
   date: string;
   source: Source;
   tag?: string | null;
-  title: string;
+  title_ja: string;
   summary: string;
   href: string;
   isExternal: boolean;
@@ -137,7 +137,7 @@ export default async function CyberNewsPage() {
                 )}
               </div>
               <h3 className="text-xl font-bold text-brand-text mb-3 leading-snug">
-                {article.title}
+                {article.title_ja}
               </h3>
               <p className="text-brand-sub text-sm leading-relaxed mb-5">
                 {article.summary}
