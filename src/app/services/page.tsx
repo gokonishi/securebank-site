@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeIn, StaggerGrid, StaggerItem } from "@/components/ui/motion";
 
@@ -21,6 +22,12 @@ const flow = [
   { label: "継続運用", color: "bg-blue-600" },
   { label: "復旧・補完", color: "bg-amber-400" },
 ];
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://securebank.co.jp/services",
+  },
+};
 
 export default function ServicesPage() {
   return (

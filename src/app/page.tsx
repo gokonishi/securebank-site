@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Hero from "@/components/sections/Hero";
 import TrustBand from "@/components/sections/TrustBand";
 import ProblemAI from "@/components/sections/ProblemAI";
@@ -9,6 +10,12 @@ import AIAdvantage from "@/components/sections/AIAdvantage";
 import Steps from "@/components/sections/Steps";
 import ClosingCTA from "@/components/sections/ClosingCTA";
 import WaveDivider from "@/components/ui/WaveDivider";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://securebank.co.jp/",
+  },
+};
 
 export default function HomePage() {
   return (

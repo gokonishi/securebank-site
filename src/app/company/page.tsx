@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeIn, StaggerGrid, StaggerItem } from "@/components/ui/motion";
 
@@ -25,6 +26,12 @@ const values = [
   { icon: "✅", title: "現実的な対策の実現", desc: "中堅中小企業の制約（予算・人員・時間）の中で実際に機能する対策を提供します。" },
   { icon: "🔄", title: "継続的な改善支援", desc: "一度の診断で終わらず、継続的にリスクを把握・改善するサイクルを企業と共に作ります。" },
 ];
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://securebank.co.jp/company",
+  },
+};
 
 export default function CompanyPage() {
   return (
