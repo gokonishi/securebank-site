@@ -143,7 +143,7 @@ export default async function CyberNewsPage() {
                 {article.summary}
               </p>
               {article.isExternal ? (
-                
+                <a
                   href={article.href}
                   target="_blank"
                   rel="noopener noreferrer"
