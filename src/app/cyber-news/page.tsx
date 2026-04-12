@@ -7,13 +7,19 @@ export const metadata: Metadata = {
     "国内外の最新AIサイバー攻撃インシデント・脅威情報をキュレーション。IPA・JPCERT/CC・警察庁・海外メディアの情報をSecureBankが解説します。",
 };
 
-type Source = "IPA" | "JPCERT/CC" | "警察庁" | "海外メディア" | "SecureBank独自解説" | "脅威インテリジェンス";
+type Source =
+  | "IPA"
+  | "JPCERT/CC"
+  | "警察庁"
+  | "海外メディア"
+  | "SecureBank独自解説"
+  | "脅威インテリジェンス";
 
 interface CyberNewsArticle {
   id: string;
   date: string;
   source: Source;
-  tag?: string;
+  tag?: string | null;
   title: string;
   summary: string;
   href: string;
@@ -21,69 +27,29 @@ interface CyberNewsArticle {
 }
 
 const sourceColors: Record<Source, string> = {
-  "IPA": "bg-blue-100 text-blue-700",
+  IPA: "bg-blue-100 text-blue-700",
   "JPCERT/CC": "bg-indigo-100 text-indigo-700",
-  "警察庁": "bg-red-100 text-red-700",
-  "海外メディア": "bg-amber-100 text-amber-700",
-  "SecureBank独自解説": "bg-purple-100 text-purple-700",
-  "脅威インテリジェンス": "bg-rose-100 text-rose-700",
+  警察庁: "bg-red-100 text-red-700",
+  海外メディア: "bg-amber-100 text-amber-700",
+  SecureBank独自解説: "bg-purple-100 text-purple-700",
+  脅威インテリジェンス: "bg-rose-100 text-rose-700",
 };
 
-const articles: CyberNewsArticle[] = [
-  {
-    id: "5",
-    date: "2026年4月11日",
-    source: "脅威インテリジェンス",
-    tag: "速報",
-    title: "AI自動攻撃時代の到来——「Claude Mythos」が示す金融・企業システムへの脅威",
-    summary:
-      "米AnthropicのAI「Claude Mythos」が数千件のゼロデイ脆弱性を自動発見。米財務省が大手銀CEOと緊急会合を開催。AI対AIのサイバー防衛時代が到来しつつあり、日本企業も対策の見直しが急務。",
-    href: "https://www.nikkei.com/article/DGXZQOGN10CK20Q6A410C2000000/",
-    isExternal: true,
-  },
-  {
-    id: "1",
-    date: "2026年4月8日",
-    source: "SecureBank独自解説",
-    title: "GPT-5ベースのスピアフィッシング攻撃が国内中小企業に急増——SecureBank分析レポート",
-    summary:
-      "2026年第1四半期、生成AIを活用したスピアフィッシングメールの検知数が前四半期比で340%増加しました。攻撃者はLinkedInやXから収集した個人情報をLLMに学習させ、役員や取引先になりすました高精度な日本語メールを自動生成しています。SecureBankの顧客企業でも月平均12件の標的型メールが確認されており、従来のメールフィルタでは検知が困難な事例が増加しています。",
-    href: "#",
-    isExternal: false,
-  },
-  {
-    id: "2",
-    date: "2026年4月3日",
-    source: "JPCERT/CC",
-    title: "JPCERT/CC注意喚起：VPN機器の脆弱性を悪用したランサムウェア攻撃の増加",
-    summary:
-      "JPCERT/CCは、国内企業で使用されるVPN機器の未パッチ脆弱性を起点としたランサムウェア攻撃が増加していると警告しています。特にFortiGate・Cisco ASA系の旧バージョンが標的となっており、初期侵入後はAI支援のラテラルムーブメントにより社内ネットワーク全域への感染拡大が確認されています。",
-    href: "https://www.jpcert.or.jp/",
-    isExternal: true,
-  },
-  {
-    id: "3",
-    date: "2026年3月28日",
-    source: "IPA",
-    title: "IPA「情報セキュリティ10大脅威 2026」：AI活用攻撃が初の1位に",
-    summary:
-      "IPAが発表した「情報セキュリティ10大脅威 2026（組織編）」において、「AIを悪用した攻撃手法の巧妙化」が初めて1位を獲得しました。フィッシング自動化・マルウェア生成・ディープフェイクを組み合わせた複合型攻撃への対策が急務とされています。",
-    href: "https://www.ipa.go.jp/",
-    isExternal: true,
-  },
-  {
-    id: "4",
-    date: "2026年3月20日",
-    source: "海外メディア",
-    title: "米国CISA・FBIが共同勧告：AIエージェントを悪用したサプライチェーン攻撃",
-    summary:
-      "米国CISAとFBIは、AIエージェントを悪用したソフトウェアサプライチェーン攻撃に関する共同勧告を発出しました。攻撃者はオープンソースリポジトリにAI生成の悪意あるコードを混入させるだけでなく、CI/CDパイプライン上でコード修正を自律的に行うAIエージェントへの不正アクセスも確認されています。日本企業も影響を受ける可能性があります。",
-    href: "https://www.cisa.gov/",
-    isExternal: true,
-  },
-];
+async function getArticles(): Promise<CyberNewsArticle[]> {
+  try {
+    const fs = await import('fs');
+    const path = await import('path');
+    const filePath = path.join(process.cwd(), 'public', 'data', 'news.json');
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(raw);
+  } catch {
+    return [];
+  }
+}
 
-export default function CyberNewsPage() {
+export default async function CyberNewsPage() {
+  const articles = await getArticles();
+
   return (
     <main className="min-h-screen bg-white">
       {/* Hero */}
@@ -148,7 +114,9 @@ export default function CyberNewsPage() {
 
       {/* Articles */}
       <section className="max-w-5xl mx-auto px-6 pb-20">
-        <h2 className="text-2xl font-bold text-brand-text mb-8">最新インシデント・脅威情報</h2>
+        <h2 className="text-2xl font-bold text-brand-text mb-8">
+          最新インシデント・脅威情報
+        </h2>
         <div className="space-y-8">
           {articles.map((article) => (
             <article
@@ -158,7 +126,7 @@ export default function CyberNewsPage() {
               <div className="flex items-center gap-3 mb-4">
                 <time className="text-sm text-brand-sub">{article.date}</time>
                 <span
-                  className={`text-xs font-semibold px-3 py-1 rounded-full ${sourceColors[article.source]}`}
+                  className={`text-xs font-semibold px-3 py-1 rounded-full ${sourceColors[article.source] ?? "bg-gray-100 text-gray-600"}`}
                 >
                   {article.source}
                 </span>
@@ -175,7 +143,7 @@ export default function CyberNewsPage() {
                 {article.summary}
               </p>
               {article.isExternal ? (
-                <a
+                
                   href={article.href}
                   target="_blank"
                   rel="noopener noreferrer"
