@@ -7,12 +7,13 @@ export const metadata: Metadata = {
     "国内外の最新AIサイバー攻撃インシデント・脅威情報をキュレーション。IPA・JPCERT/CC・警察庁・海外メディアの情報をSecureBankが解説します。",
 };
 
-type Source = "IPA" | "JPCERT/CC" | "警察庁" | "海外メディア" | "SecureBank独自解説";
+type Source = "IPA" | "JPCERT/CC" | "警察庁" | "海外メディア" | "SecureBank独自解説" | "脅威インテリジェンス";
 
 interface CyberNewsArticle {
   id: string;
   date: string;
   source: Source;
+  tag?: string;
   title: string;
   summary: string;
   href: string;
@@ -25,9 +26,21 @@ const sourceColors: Record<Source, string> = {
   "警察庁": "bg-red-100 text-red-700",
   "海外メディア": "bg-amber-100 text-amber-700",
   "SecureBank独自解説": "bg-purple-100 text-purple-700",
+  "脅威インテリジェンス": "bg-rose-100 text-rose-700",
 };
 
 const articles: CyberNewsArticle[] = [
+  {
+    id: "5",
+    date: "2026年4月11日",
+    source: "脅威インテリジェンス",
+    tag: "速報",
+    title: "AI自動攻撃時代の到来——「Claude Mythos」が示す金融・企業システムへの脅威",
+    summary:
+      "米AnthropicのAI「Claude Mythos」が数千件のゼロデイ脆弱性を自動発見。米財務省が大手銀CEOと緊急会合を開催。AI対AIのサイバー防衛時代が到来しつつあり、日本企業も対策の見直しが急務。",
+    href: "https://www.nikkei.com/article/DGXZQOGN10CK20Q6A410C2000000/",
+    isExternal: true,
+  },
   {
     id: "1",
     date: "2026年4月8日",
@@ -149,6 +162,11 @@ export default function CyberNewsPage() {
                 >
                   {article.source}
                 </span>
+                {article.tag && (
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-orange-100 text-orange-700">
+                    {article.tag}
+                  </span>
+                )}
               </div>
               <h3 className="text-xl font-bold text-brand-text mb-3 leading-snug">
                 {article.title}
