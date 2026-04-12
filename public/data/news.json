@@ -1,5 +1,55 @@
 [
   {
+    "id": "1776005946885",
+    "title_ja": "CPU-Z偽装マルウェアでRATを配布、公式サイト侵害",
+    "summary": "ハードウェア監視ツール「CPU-Z」等を提供する公式サイトCPUIDが約19時間にわたり侵害され、正規ソフトに見せかけた悪意あるインストーラーが配布された。ダウンロードしたユーザーには遠隔操作型マルウェア「STX RAT」が感染する恐れがある。被害期間は日本時間2025年4月10日0時〜同日19時頃に相当する。",
+    "date": "2026年4月12日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776005946888",
+    "title_ja": "Adobe AcrobatにCVSS8.6の深刻な脆弱性、悪用確認済み",
+    "summary": "AdobeはAcrobat Readerに存在する重大な脆弱性（CVE-2026-34621）に対する緊急アップデートをリリースしました。CVSSスコアは8.6と高く、攻撃者が標的システム上で任意の悪意あるコードを実行できる危険性があります。すでに実環境での悪用が確認されており、早急な対応が必要です。",
+    "date": "2026年4月12日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776005946890",
+    "title_ja": "開発環境を狙うGlassWormの新たな攻撃手法を確認",
+    "summary": "GlassWormキャンペーンの新たな亜種が確認され、Zigで開発されたドロッパーを使用して開発者マシン上の全IDEへの感染を試みます。Open VSXの拡張機能「specstudio.code-wakatime-activity-tracker」がWakaTimeを偽装した悪意あるパッケージとして発見されました。開発者環境を起点にサプライチェーン攻撃へ発展するリスクがあります。",
+    "date": "2026年4月12日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776005946891",
+    "title_ja": "AIブラウザ拡張機能が新たなセキュリティの盲点に",
+    "summary": "AIセキュリティの議論はシャドーAIやGenAI利用に集中しているが、ブラウザ拡張機能という重大な脅威が見落とされている。LayerXの新レポートによると、AIブラウザ拡張機能は企業ネットワークにおける最も危険な攻撃対象領域の一つとなっている。従業員が無審査でインストールするAI拡張機能は、機密データの漏洩経路となるリスクがある。",
+    "date": "2026年4月12日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776005946893",
+    "title_ja": "Chrome 146がセッション盗難防止機能を正式提供",
+    "summary": "GoogleはChrome 146でDevice Bound Session Credentials（DBSC）をWindows向けに正式リリースした。DBSCはセッショントークンをデバイスのTPMチップに紐付けることでクッキー窃取攻撃を無効化する技術である。macOS対応も近日中に予定されており、段階的に対象が拡大される見込みだ。",
+    "date": "2026年4月12日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
     "id": "1776005931163",
     "title_ja": "CPU-Z偽装マルウェアでRATを配布、公式サイト侵害",
     "summary": "ハードウェア監視ツール「CPU-Z」等を提供する公式サイトCPUIDが約19時間にわたり侵害され、正規ソフトに見せかけた悪意あるインストーラーが配布された。ダウンロードしたユーザーには遠隔操作型マルウェア「STX RAT」が感染する恐れがある。被害期間は日本時間2025年4月10日0時〜同日19時頃に相当する。",
