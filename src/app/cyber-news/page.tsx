@@ -142,7 +142,7 @@ export default async function CyberNewsPage() {
               <p className="text-brand-sub text-sm leading-relaxed mb-5">
                 {article.summary}
               </p>
-              {article.isExternal && article.href !== "#" && (
+              {article.href !== "#" && (
                 <a
                   href={article.href}
                   target="_blank"

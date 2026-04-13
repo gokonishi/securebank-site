@@ -6,8 +6,8 @@
     "date": "2026年4月12日",
     "source": "SecureBank",
     "tag": null,
-    "href": "#",
-    "isExternal": false
+    "href": "https://thehackernews.com/2026/04/cpuid-breach-distributes-stx-rat-via.html",
+    "isExternal": true
   },
   {
     "id": "1776007274935",
@@ -16,8 +16,8 @@
     "date": "2026年4月12日",
     "source": "SecureBank",
     "tag": null,
-    "href": "#",
-    "isExternal": false
+    "href": "https://thehackernews.com/2026/04/adobe-patches-actively-exploited-acrobat.html",
+    "isExternal": true
   },
   {
     "id": "1776007274937",
@@ -26,8 +26,8 @@
     "date": "2026年4月12日",
     "source": "SecureBank",
     "tag": null,
-    "href": "#",
-    "isExternal": false
+    "href": "https://thehackernews.com/2026/04/glassworm.html",
+    "isExternal": true
   },
   {
     "id": "1776007274938",
@@ -36,8 +36,8 @@
     "date": "2026年4月12日",
     "source": "SecureBank",
     "tag": null,
-    "href": "#",
-    "isExternal": false
+    "href": "https://thehackernews.com/2026/04/ai-browser-extensions.html",
+    "isExternal": true
   },
   {
     "id": "1776007274940",
@@ -46,8 +46,8 @@
     "date": "2026年4月12日",
     "source": "SecureBank",
     "tag": null,
-    "href": "#",
-    "isExternal": false
+    "href": "https://thehackernews.com/2026/04/chrome-146-dbsc.html",
+    "isExternal": true
   },
   {
     "id": "1",
@@ -63,7 +63,7 @@
       "RAT",
       "サプライチェーン"
     ],
-    "href": "https://thehackernews.com",
+    "href": "https://thehackernews.com/2026/04/cpuid-breach-distributes-stx-rat-via.html",
     "isExternal": true
   },
   {
@@ -80,7 +80,7 @@
       "Adobe",
       "CVE"
     ],
-    "href": "https://thehackernews.com",
+    "href": "https://thehackernews.com/2026/04/adobe-patches-actively-exploited-acrobat.html",
     "isExternal": true
   },
   {
@@ -97,7 +97,7 @@
       "開発環境",
       "サプライチェーン"
     ],
-    "href": "https://thehackernews.com",
+    "href": "https://thehackernews.com/2026/04/glassworm.html",
     "isExternal": true
   },
   {
@@ -114,7 +114,7 @@
       "シャドーAI",
       "データ漏洩"
     ],
-    "href": "https://thehackernews.com",
+    "href": "https://thehackernews.com/2026/04/ai-browser-extensions.html",
     "isExternal": true
   },
   {
@@ -131,7 +131,7 @@
       "認証",
       "セッション管理"
     ],
-    "href": "https://thehackernews.com",
+    "href": "https://thehackernews.com/2026/04/chrome-146-dbsc.html",
     "isExternal": true
   },
   {
