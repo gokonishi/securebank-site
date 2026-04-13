@@ -142,7 +142,7 @@ export default async function CyberNewsPage() {
               <p className="text-brand-sub text-sm leading-relaxed mb-5">
                 {article.summary}
               </p>
-              {article.isExternal ? (
+              {article.isExternal && article.href !== "#" && (
                 <a
                   href={article.href}
                   target="_blank"
@@ -154,13 +154,6 @@ export default async function CyberNewsPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </a>
-              ) : (
-                <Link
-                  href={article.href}
-                  className="text-sm font-semibold text-brand-blue hover:underline inline-flex items-center gap-1"
-                >
-                  続きを読む →
-                </Link>
               )}
             </article>
           ))}
