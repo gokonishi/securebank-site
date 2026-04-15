@@ -1,5 +1,55 @@
 [
   {
+    "id": "1776264971793",
+    "title_ja": "nginx-ui重大脆弱性、悪用が活発化",
+    "summary": "オープンソースのNginx管理ツール「nginx-ui」に認証バイパスの重大脆弱性（CVE-2026-33032、CVSSスコア9.8）が発見されました。攻撃者はこの脆弱性を悪用することで、Nginxサーバーを完全に乗っ取ることが可能です。既に野外での積極的な悪用が確認されており、早急な対応が求められます。",
+    "date": "2026年4月15日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776264971823",
+    "title_ja": "4月パッチで複数製品の重大脆弱性を修正",
+    "summary": "Adobe・Fortinet・Microsoft・SAPの製品に影響する重大な脆弱性が4月のパッチチューズデーで公開されました。特にSAP Business Planning and ConsolidationおよびSAP Business WarehouseにおけるSQLインジェクション脆弱性（CVE-2026-27681、CVSSスコア9.9）は任意のデータベース操作を許す危険性があります。該当製品を利用している企業は早急な対応が求められます。",
+    "date": "2026年4月15日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776264971824",
+    "title_ja": "AI導入加速で露出する新たなセキュリティリスク",
+    "summary": "AIは実験段階から経営課題へと急速に移行し、全業界でCISOがAIセキュリティ対策の強化を迫られている。Pentera社の調査では、AIエージェント型アーキテクチャの普及により従来の検証手法では対応困難な露出リスクが増大している。日本企業もAI導入推進と同時に、決定論的AIとエージェント型AIを組み合わせたセキュリティ検証体制の構築が急務となっている。",
+    "date": "2026年4月15日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776264971826",
+    "title_ja": "Microsoft、169件の脆弱性を修正―SharePointゼロデイも含む",
+    "summary": "Microsoftが169件の脆弱性に対応するセキュリティパッチを公開。うち1件はSharePointの脆弱性で既に攻撃に悪用されている。深刻度「重要」が157件、「緊急」が8件含まれており、過去最大規模のパッチ公開となった。",
+    "date": "2026年4月15日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776264971827",
+    "title_ja": "OpenAI、防衛特化型AI「GPT-5.4-Cyber」を発表",
+    "summary": "OpenAIはサイバーセキュリティ防衛用途に特化したGPT-5.4-Cyberを発表しました。セキュリティチームが脅威の発見・修正を加速できるよう最適化されており、Anthropicの新モデル「Mythos」に続くAIセキュリティ競争の激化を示しています。防御側がAIを活用してシステム・データ・ユーザー保護を強化できる新時代が到来しつつあります。",
+    "date": "2026年4月15日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
     "id": "1776210730730",
     "title_ja": "PHP Composerに深刻な脆弱性、任意コマンド実行の恐れ",
     "summary": "PHPのパッケージ管理ツール「Composer」に2件の高深刻度脆弱性が発見されました。Perforce VCSドライバーに存在するコマンドインジェクションの欠陥であり、悪用された場合は任意のコマンドが実行される危険があります。既にパッチがリリースされており、早急な対応が求められます。",
@@ -146,91 +196,6 @@
     "date": "2026年4月12日",
     "source": "SecureBank",
     "tag": null,
-    "href": "https://thehackernews.com/2026/04/chrome-146-dbsc.html",
-    "isExternal": true
-  },
-  {
-    "id": "1",
-    "date": "2026年4月12日",
-    "source": "脅威インテリジェンス",
-    "tag": null,
-    "title_ja": "CPU-Z偽装マルウェアでRATを配布、公式サイト侵害",
-    "summary": "ハードウェア監視ツールCPU-Z等を提供する公式サイトCPUIDが約19時間にわたり侵害され、正規ソフトに見せかけた悪意あるインストーラーが配布された。STX RATと呼ばれるリモートアクセス型トロイの木馬への感染リスクがある。",
-    "securebank_view": "正規ソフトのインストーラーも信頼できない時代です。AIペネトレーションテストで自社の侵入リスクを事前に把握してください。",
-    "severity": 8,
-    "tags": [
-      "マルウェア",
-      "RAT",
-      "サプライチェーン"
-    ],
-    "href": "https://thehackernews.com/2026/04/cpuid-breach-distributes-stx-rat-via.html",
-    "isExternal": true
-  },
-  {
-    "id": "2",
-    "date": "2026年4月12日",
-    "source": "脅威インテリジェンス",
-    "tag": null,
-    "title_ja": "Adobe AcrobatにCVSS8.6の深刻な脆弱性、悪用確認済み",
-    "summary": "AdobeはAcrobat Readerに存在する重大な脆弱性CVE-2026-34621に対する緊急パッチをリリース。CVSSスコア8.6で、すでに実環境での悪用が確認されており、早急な対応が必要です。",
-    "securebank_view": "既知の脆弱性が悪用される前にASMで継続的な資産監視を行うことが重要です。",
-    "severity": 9,
-    "tags": [
-      "脆弱性",
-      "Adobe",
-      "CVE"
-    ],
-    "href": "https://thehackernews.com/2026/04/adobe-patches-actively-exploited-acrobat.html",
-    "isExternal": true
-  },
-  {
-    "id": "3",
-    "date": "2026年4月12日",
-    "source": "脅威インテリジェンス",
-    "tag": null,
-    "title_ja": "開発環境を狙うGlassWormの新たな攻撃手法を確認",
-    "summary": "GlassWormの新たな亜種が確認され、開発者マシン上の全IDEへの感染を試みます。Open VSXの悪意ある拡張機能を通じてサプライチェーン攻撃へ発展するリスクがあります。",
-    "securebank_view": "開発環境のセキュリティ強化が急務です。ペネトレーションテストで開発フローの脆弱性を洗い出してください。",
-    "severity": 7,
-    "tags": [
-      "マルウェア",
-      "開発環境",
-      "サプライチェーン"
-    ],
-    "href": "https://thehackernews.com/2026/04/glassworm.html",
-    "isExternal": true
-  },
-  {
-    "id": "4",
-    "date": "2026年4月12日",
-    "source": "脅威インテリジェンス",
-    "tag": null,
-    "title_ja": "AIブラウザ拡張機能が新たなセキュリティの盲点に",
-    "summary": "AIブラウザ拡張機能は企業ネットワークにおける最も危険な攻撃対象領域の一つとなっている。従業員が無審査でインストールするAI拡張機能は、機密データの漏洩経路となるリスクがあります。",
-    "securebank_view": "シャドーITの管理にASMを活用し、未承認ツールの利用状況を可視化することを推奨します。",
-    "severity": 6,
-    "tags": [
-      "ブラウザ拡張",
-      "シャドーAI",
-      "データ漏洩"
-    ],
-    "href": "https://thehackernews.com/2026/04/ai-browser-extensions.html",
-    "isExternal": true
-  },
-  {
-    "id": "5",
-    "date": "2026年4月12日",
-    "source": "脅威インテリジェンス",
-    "tag": null,
-    "title_ja": "Chrome 146がセッション盗難防止機能を正式提供",
-    "summary": "GoogleはChrome 146でDevice Bound Session CredentialsをWindows向けに正式リリース。セッショントークンをTPMチップに紐付けることでクッキー窃取攻撃を無効化します。",
-    "securebank_view": "ブラウザ側の対策だけでは不十分です。多層防御の観点からセキュリティ診断を定期的に実施してください。",
-    "severity": 5,
-    "tags": [
-      "Chrome",
-      "認証",
-      "セッション管理"
-    ],
     "href": "https://thehackernews.com/2026/04/chrome-146-dbsc.html",
     "isExternal": true
   }
