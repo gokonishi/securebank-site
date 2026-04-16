@@ -1,5 +1,55 @@
 [
   {
+    "id": "1776305821298",
+    "title_ja": "n8nワークフロー悪用フィッシング攻撃が急増",
+    "summary": "AIワークフロー自動化ツール「n8n」が2025年10月からサイバー攻撃者に悪用されています。信頼性の高いインフラを踏み台にすることで、従来のセキュリティフィルターを回避しマルウェアを配布しています。自動化メール経由でデバイス情報の収集や悪意あるペイロードの実行が確認されています。",
+    "date": "2026年4月16日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776305821304",
+    "title_ja": "nginx-ui重大脆弱性、悪用が進行中",
+    "summary": "オープンソースのNginx管理ツール「nginx-ui」に認証回避の重大脆弱性（CVE-2026-33032、CVSSスコア9.8）が発見されました。攻撃者はこの脆弱性を悪用することでNginxサーバーを完全に乗っ取ることが可能です。すでに実環境での悪用が確認されており、早急な対応が求められます。",
+    "date": "2026年4月16日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776305821305",
+    "title_ja": "4月パッチTuesday：SAP等に深刻な脆弱性",
+    "summary": "Adobe・Fortinet・Microsoft・SAPの製品に複数の重大な脆弱性が確認された。特にSAP Business Planning and ConsolidationおよびSAP Business WarehouseのSQLインジェクション脆弱性（CVSSスコア9.9）は最高レベルの危険度。悪用されると任意のデータベース操作が実行される恐れがある。",
+    "date": "2026年4月16日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776305821307",
+    "title_ja": "決定論的AIとエージェントAIの融合がセキュリティ検証を変える",
+    "summary": "AIは実験段階からボードルームの必須議題へと急速に移行しており、経営層・投資家がセキュリティ機能へのAI導入を強く推進している。Pentераの調査では、全CISOがAIを活用した露出管理の重要性を認識していることが示された。決定論的AIとエージェントAIを組み合わせたアーキテクチャが、次世代のセキュリティ検証基盤として注目されている。",
+    "date": "2026年4月16日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
+    "id": "1776305821309",
+    "title_ja": "MS、169件の脆弱性修正パッチを緊急公開",
+    "summary": "Microsoftが169件の脆弱性に対応するパッチを公開。SharePointのゼロデイ脆弱性が既に悪用されており、うち8件がCritical、157件がImportantと評価されている。日本企業においても早急な対応が求められる。",
+    "date": "2026年4月16日",
+    "source": "SecureBank",
+    "tag": null,
+    "href": "#",
+    "isExternal": false
+  },
+  {
     "id": "1776264971793",
     "title_ja": "nginx-ui重大脆弱性、悪用が活発化",
     "summary": "オープンソースのNginx管理ツール「nginx-ui」に認証バイパスの重大脆弱性（CVE-2026-33032、CVSSスコア9.8）が発見されました。攻撃者はこの脆弱性を悪用することで、Nginxサーバーを完全に乗っ取ることが可能です。既に野外での積極的な悪用が確認されており、早急な対応が求められます。",
@@ -148,55 +198,5 @@
     "tag": null,
     "href": "#",
     "isExternal": false
-  },
-  {
-    "id": "1776007274927",
-    "title_ja": "CPU-Z偽装マルウェアでRATを配布、公式サイト侵害",
-    "summary": "ハードウェア監視ツール「CPU-Z」等を提供する公式サイトCPUIDが約19時間にわたり侵害され、正規ソフトに見せかけた悪意あるインストーラーが配布された。ダウンロードしたユーザーには遠隔操作型マルウェア「STX RAT」が感染する恐れがある。被害期間は日本時間2025年4月10日0時〜同日19時頃に相当する。",
-    "date": "2026年4月12日",
-    "source": "SecureBank",
-    "tag": null,
-    "href": "https://thehackernews.com/2026/04/cpuid-breach-distributes-stx-rat-via.html",
-    "isExternal": true
-  },
-  {
-    "id": "1776007274935",
-    "title_ja": "Adobe AcrobatにCVSS8.6の深刻な脆弱性、悪用確認済み",
-    "summary": "AdobeはAcrobat Readerに存在する重大な脆弱性（CVE-2026-34621）に対する緊急アップデートをリリースしました。CVSSスコアは8.6と高く、攻撃者が標的システム上で任意の悪意あるコードを実行できる危険性があります。すでに実環境での悪用が確認されており、早急な対応が必要です。",
-    "date": "2026年4月12日",
-    "source": "SecureBank",
-    "tag": null,
-    "href": "https://thehackernews.com/2026/04/adobe-patches-actively-exploited-acrobat.html",
-    "isExternal": true
-  },
-  {
-    "id": "1776007274937",
-    "title_ja": "開発環境を狙うGlassWormの新たな攻撃手法を確認",
-    "summary": "GlassWormキャンペーンの新たな亜種が確認され、Zigで開発されたドロッパーを使用して開発者マシン上の全IDEへの感染を試みます。Open VSXの拡張機能「specstudio.code-wakatime-activity-tracker」がWakaTimeを偽装した悪意あるパッケージとして発見されました。開発者環境を起点にサプライチェーン攻撃へ発展するリスクがあります。",
-    "date": "2026年4月12日",
-    "source": "SecureBank",
-    "tag": null,
-    "href": "https://thehackernews.com/2026/04/glassworm.html",
-    "isExternal": true
-  },
-  {
-    "id": "1776007274938",
-    "title_ja": "AIブラウザ拡張機能が新たなセキュリティの盲点に",
-    "summary": "AIセキュリティの議論はシャドーAIやGenAI利用に集中しているが、ブラウザ拡張機能という重大な脅威が見落とされている。LayerXの新レポートによると、AIブラウザ拡張機能は企業ネットワークにおける最も危険な攻撃対象領域の一つとなっている。従業員が無審査でインストールするAI拡張機能は、機密データの漏洩経路となるリスクがある。",
-    "date": "2026年4月12日",
-    "source": "SecureBank",
-    "tag": null,
-    "href": "https://thehackernews.com/2026/04/ai-browser-extensions.html",
-    "isExternal": true
-  },
-  {
-    "id": "1776007274940",
-    "title_ja": "Chrome 146がセッション盗難防止機能を正式提供",
-    "summary": "GoogleはChrome 146でDevice Bound Session Credentials（DBSC）をWindows向けに正式リリースした。DBSCはセッショントークンをデバイスのTPMチップに紐付けることでクッキー窃取攻撃を無効化する技術である。macOS対応も近日中に予定されており、段階的に対象が拡大される見込みだ。",
-    "date": "2026年4月12日",
-    "source": "SecureBank",
-    "tag": null,
-    "href": "https://thehackernews.com/2026/04/chrome-146-dbsc.html",
-    "isExternal": true
   }
 ]
