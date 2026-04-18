@@ -4,20 +4,19 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navItems = [
-  { label: "AIが変える脅威", href: "#problem" },
-  { label: "技術の違い", href: "#differentiation" },
-  { label: "機能", href: "#features" },
-  { label: "ビジネス効果", href: "#roi" },
+  { label: "AI時代の脅威", href: "#limits" },
+  { label: "解決策", href: "#value" },
+  { label: "よくある質問", href: "#faq" },
 ];
 
-export default function LpHeader() {
+export default function LpShellHeader() {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/ai-hacker" className="flex items-center gap-2">
+        <Link href="/lp/ai-attack-simulation" className="flex items-center gap-2">
           <span className="font-display font-extrabold text-lg tracking-tight text-white">
             SECUREBANK{" "}
           </span>
@@ -48,10 +47,10 @@ export default function LpHeader() {
             ← SecureBankについて
           </Link>
           <a
-            href="#cta"
-            className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-white border border-red-500 rounded hover:bg-red-500 transition-colors duration-150"
+            href="/contact"
+            className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-white bg-red-500 rounded hover:bg-red-600 transition-colors duration-150"
           >
-            先行アクセス申請 [/DEMO]
+            無料相談する →
           </a>
 
           {/* Mobile hamburger */}

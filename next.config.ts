@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
         destination: "https://securebank.co.jp/:path*",
         permanent: true,
       },
+      {
+        source: "/ai-hacker",
+        destination: "/lp/ai-attack-simulation",
+        permanent: true,
+      },
     ];
   },
 };

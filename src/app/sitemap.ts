@@ -15,10 +15,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: 'https://securebank.co.jp/ai-hacker',
+      url: 'https://securebank.co.jp/lp/ai-attack-simulation',
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: 'https://securebank.co.jp/news',
