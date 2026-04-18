@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { DM_Sans, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -35,9 +33,7 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${inter.variable} bg-white text-brand-text antialiased`}
       >
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        {children}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-1KXW5GGL3X"
           strategy="afterInteractive"
