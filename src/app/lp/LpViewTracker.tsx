@@ -16,7 +16,7 @@ export default function LpViewTracker() {
     if (!pathname) return;
     const slug = pathname.replace(/^\/lp\//, "");
     if (typeof window.gtag === "function") {
-      window.gtag("event", "lp_view", { page: slug });
+      window.gtag("event", "lp_view", { lp: slug });
     }
   }, [pathname]);
 

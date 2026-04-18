@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import LpCtaLink from "@/components/lp/blocks/LpCtaLink";
 
 const navItems = [
   { label: "AI時代の脅威", href: "#limits" },
@@ -46,12 +47,15 @@ export default function LpShellHeader() {
           >
             ← SecureBankについて
           </Link>
-          <a
+          <LpCtaLink
+            event="header_cta_click"
+            section="header"
+            label="無料相談する"
             href="/contact"
             className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-white bg-red-500 rounded hover:bg-red-600 transition-colors duration-150"
           >
             無料相談する →
-          </a>
+          </LpCtaLink>
 
           {/* Mobile hamburger */}
           <button

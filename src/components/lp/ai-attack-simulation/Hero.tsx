@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import LpCtaLink from "@/components/lp/blocks/LpCtaLink";
 
 export default function Hero() {
   return (
@@ -60,12 +61,15 @@ export default function Hero() {
           transition={{ duration: 0.55, delay: 0.35 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <a
+          <LpCtaLink
+            event="hero_cta_click"
+            section="hero_primary"
+            label="無料で状況を確認する"
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-4 bg-red-500 hover:bg-red-600 text-white font-bold text-base rounded transition-colors duration-150 shadow-[0_0_30px_rgba(239,68,68,0.4)]"
           >
             無料で状況を確認する →
-          </a>
+          </LpCtaLink>
           <a
             href="#limits"
             className="inline-flex items-center justify-center px-8 py-4 border border-white/20 text-white font-semibold text-base rounded hover:bg-white/5 transition-colors duration-150"

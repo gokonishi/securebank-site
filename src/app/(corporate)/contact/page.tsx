@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { getLpSource } from "@/app/lp/lp-analytics";
 
 declare global {
   interface Window {
@@ -21,6 +22,12 @@ export default function ContactPage() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "contact_form_view", { source: getLpSource() });
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -44,9 +51,8 @@ export default function ContactPage() {
 
       if (data.ok) {
         if (typeof window !== "undefined" && typeof window.gtag === "function") {
-          window.gtag("event", "close_convert_lead", {
-            event_category: "contact",
-            event_label: "form_submit",
+          window.gtag("event", "contact_form_submit", {
+            source: getLpSource(),
           });
         }
         router.push("/contact/thanks");

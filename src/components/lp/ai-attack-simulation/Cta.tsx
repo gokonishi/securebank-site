@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import LpCtaLink from "@/components/lp/blocks/LpCtaLink";
 
 export default function Cta() {
   const ref = useRef(null);
@@ -39,12 +40,15 @@ export default function Cta() {
             導入の強制は一切ありません。
           </p>
 
-          <a
+          <LpCtaLink
+            event="bottom_cta_click"
+            section="bottom"
+            label="無料相談を予約する"
             href="/contact"
             className="inline-flex items-center justify-center px-10 py-5 bg-red-500 hover:bg-red-600 text-white font-bold text-base rounded transition-colors duration-150 shadow-[0_0_40px_rgba(239,68,68,0.5)]"
           >
             無料相談を予約する →
-          </a>
+          </LpCtaLink>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-2 justify-center items-center text-xs text-slate-500">
             <span>✓ 費用は一切かかりません</span>

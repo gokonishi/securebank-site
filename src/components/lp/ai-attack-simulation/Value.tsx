@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import LpCtaLink from "@/components/lp/blocks/LpCtaLink";
 
 const values = [
   {
@@ -90,12 +91,15 @@ export default function Value() {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mt-14 text-center"
         >
-          <a
+          <LpCtaLink
+            event="mid_cta_click"
+            section="value"
+            label="AI攻撃シミュレーションを相談する"
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-4 bg-red-500 hover:bg-red-600 text-white font-bold text-sm rounded transition-colors duration-150 shadow-[0_0_30px_rgba(239,68,68,0.3)]"
           >
             AI攻撃シミュレーションを相談する →
-          </a>
+          </LpCtaLink>
           <p className="text-xs text-slate-500 mt-4">初回相談は無料です</p>
         </motion.div>
       </div>

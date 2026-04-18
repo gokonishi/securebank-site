@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import LpCtaLink from "@/components/lp/blocks/LpCtaLink";
 
 const services = [
   {
@@ -68,12 +69,15 @@ export default function Complementary() {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mt-14 text-center"
         >
-          <a
+          <LpCtaLink
+            event="mid_cta_click"
+            section="complementary"
+            label="まとめて無料相談する"
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-4 border border-white/30 hover:bg-white/5 text-white font-semibold text-sm rounded transition-colors duration-150"
           >
             まとめて無料相談する →
-          </a>
+          </LpCtaLink>
         </motion.div>
       </div>
     </section>

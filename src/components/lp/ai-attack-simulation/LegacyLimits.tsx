@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import LpCtaLink from "@/components/lp/blocks/LpCtaLink";
 
 const limits = [
   {
@@ -74,12 +75,15 @@ export default function LegacyLimits() {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mt-12 text-center"
         >
-          <a
+          <LpCtaLink
+            event="mid_cta_click"
+            section="limits"
+            label="自社の状況を確認する"
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-4 bg-red-500 hover:bg-red-600 text-white font-bold text-sm rounded transition-colors duration-150"
           >
             自社の状況を確認する →
-          </a>
+          </LpCtaLink>
         </motion.div>
       </div>
     </section>
