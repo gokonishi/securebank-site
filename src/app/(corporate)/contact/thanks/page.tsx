@@ -41,10 +41,10 @@ export default function ContactThanksPage() {
           <p className="text-sm text-brand-sub">
             メール：
             <a
-              href="mailto:konishi@securebank.co.jp"
+              href="mailto:sb-info@securebank.co.jp"
               className="text-brand-blue hover:underline font-medium"
             >
-              konishi@securebank.co.jp
+              sb-info@securebank.co.jp
             </a>
           </p>
         </div>

@@ -72,8 +72,8 @@ export default function ContactPage() {
       <p className="text-brand-sub mb-8">
         初回相談は無料です。担当者より2営業日以内にご連絡いたします。<br />
         メールでのお問い合わせは{" "}
-        <a href="mailto:konishi@securebank.co.jp" className="text-brand-blue hover:underline">
-          konishi@securebank.co.jp
+        <a href="mailto:sb-info@securebank.co.jp" className="text-brand-blue hover:underline">
+          sb-info@securebank.co.jp
         </a>{" "}
         へどうぞ。
       </p>
