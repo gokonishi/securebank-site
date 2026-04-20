@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FadeIn, StaggerGrid, StaggerItem } from "@/components/ui/motion";
 
 const info = [
-  { label: "商号", value: <><p className="font-bold text-brand-text">セキュア・バンク株式会社</p><p className="text-brand-sub text-[14px] mt-0.5">Secure Bank Inc.</p></> },
+  { label: "商号", value: <><p className="font-bold text-brand-text">セキュア・バンク株式会社</p><p className="text-brand-sub text-[14px] mt-0.5">SECUREBANK Co., Ltd.</p></> },
   { label: "設立", value: <p className="text-brand-text">2026年4月1日</p> },
   { label: "資本金", value: <><p className="text-brand-text">12,750,000円</p><p className="text-brand-sub text-[14px] mt-0.5">（資本準備金：12,750,000円）</p></> },
   { label: "代表者", value: <p className="text-brand-text">代表取締役　小西 剛</p> },
