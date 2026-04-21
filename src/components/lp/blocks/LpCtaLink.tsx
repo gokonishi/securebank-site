@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { trackLpCta, type LpCtaEvent } from "@/app/lp/lp-analytics";
 
@@ -24,12 +25,19 @@ export default function LpCtaLink({
 
   const handleClick = () => {
     const lp = pathname?.replace(/^\/lp\//, "") ?? "unknown";
+    console.log("[LpCtaLink] CTA clicked", {
+      event,
+      section,
+      label,
+      lp,
+      href,
+    });
     trackLpCta(event, { lp, section, label });
   };
 
   return (
-    <a href={href} className={className} onClick={handleClick}>
+    <Link href={href} className={className} onClick={handleClick}>
       {children}
-    </a>
+    </Link>
   );
 }
