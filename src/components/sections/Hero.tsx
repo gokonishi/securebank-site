@@ -46,9 +46,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-[52px] md:text-[64px] lg:text-[68px] font-extrabold tracking-[-0.02em] text-brand-text leading-[1.05] mb-7"
             >
-              あなたの会社も、<br />
-              すでに<span className="text-gradient">AIサイバー攻撃</span>の<br />
-              対象です。
+              攻撃される前提で、<br />
+              <span className="text-gradient">守れているか。</span>
             </motion.h1>
 
             <motion.p
@@ -57,7 +56,7 @@ export default function Hero() {
               transition={{ duration: 0.55, delay: 0.16 }}
               className="text-[19px] font-semibold text-brand-blue mb-4"
             >
-              AIによる自動攻撃から守る、新しいセキュリティ
+              AI vs AI の時代に、年1回の診断ではもう守れない。
             </motion.p>
 
             <motion.p
@@ -66,8 +65,8 @@ export default function Hero() {
               transition={{ duration: 0.55, delay: 0.22 }}
               className="text-[17px] text-brand-sub leading-[1.8] mb-10 max-w-lg"
             >
-              攻撃がAI化する時代に、中堅中小企業でも現実的に導入できる防御を。
-              専門部門を持てない企業こそ、攻撃者視点の継続的な対策が必要です。
+              &quot;対策した&quot;ではなく、&quot;破られなかった&quot;証拠を。
+              AI攻撃シミュレーションで、経営会議で使える検証結果を手に入れます。
             </motion.p>
 
             <motion.div
@@ -77,10 +76,10 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link href="/contact" className="btn-grad btn-pulse">
-                まずは現状把握から始める
+                無料診断を試す
               </Link>
-              <Link href="/services" className="btn-outline">
-                サービスを見る →
+              <Link href="/lp/ai-attack-simulation" className="btn-outline">
+                AI攻撃シミュレーションを見る →
               </Link>
             </motion.div>
           </div>

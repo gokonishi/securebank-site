@@ -2,8 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "お問い合わせありがとうございます | セキュア・バンク株式会社",
+  title: "お問い合わせありがとうございます",
   description: "お問い合わせを受け付けました。担当者より2営業日以内にご連絡いたします。",
+  robots: { index: false, follow: true },
 };
 
 export default function ContactThanksPage() {

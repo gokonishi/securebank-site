@@ -9,28 +9,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: 'https://securebank.co.jp/lp/ai-attack-simulation',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.95,
+    },
+    {
       url: 'https://securebank.co.jp/services',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
-    },
-    {
-      url: 'https://securebank.co.jp/lp/ai-attack-simulation',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: 'https://securebank.co.jp/news',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: 'https://securebank.co.jp/cyber-news',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
     },
     {
       url: 'https://securebank.co.jp/case-studies',
@@ -39,9 +27,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: 'https://securebank.co.jp/pricing',
+      url: 'https://securebank.co.jp/news',
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://securebank.co.jp/cyber-news',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
       priority: 0.7,
     },
     {
@@ -55,6 +49,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      url: 'https://securebank.co.jp/company/message',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
     },
     {
       url: 'https://securebank.co.jp/contact',

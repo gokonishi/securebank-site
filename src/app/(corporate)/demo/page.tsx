@@ -1,16 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
-
-// Note: metadata cannot be exported from a 'use client' component.
-// Move metadata to a separate layout.tsx if needed.
 
 const demoFeatures = [
-  "AIによる攻撃シミュレーションのライブデモ",
-  "貴社の外部公開資産スキャン結果の確認",
-  "現状のリスク評価レポート（無料）",
-  "専任エンジニアによる30分の個別説明",
+  "AI攻撃シミュレーションのライブデモ（15分）",
+  "実際の攻撃シナリオと証拠付きレポートのサンプル",
+  "貴社の公開資産から見える侵入経路の仮説",
+  "Layer 0〜5 の多層防御の検証ポイント",
 ];
 
 export default function DemoPage() {
@@ -33,7 +29,6 @@ export default function DemoPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // TODO: connect to /api/contact or a dedicated demo API route
     await new Promise((r) => setTimeout(r, 800));
     setSubmitted(true);
     setLoading(false);
@@ -45,13 +40,14 @@ export default function DemoPage() {
       <section className="pt-32 pb-16 bg-brand-section border-b border-brand-border">
         <div className="max-w-5xl mx-auto px-6">
           <p className="text-xs font-bold uppercase tracking-widest text-brand-blue mb-3">
-            Free Demo
+            Demo
           </p>
-          <h1 className="text-4xl md:text-5xl font-extrabold font-display text-brand-text leading-tight mb-4">
-            無料デモを申し込む
+          <h1 className="text-4xl md:text-5xl font-extrabold font-display text-brand-text leading-[1.15] mb-5">
+            15分で、<br />攻撃再現デモを見る。
           </h1>
-          <p className="text-brand-sub text-[17px] max-w-xl leading-relaxed">
-            30分のオンラインデモで、AIサイバー攻撃がどれだけリアルに自社を標的にするかをご体感ください。
+          <p className="text-brand-sub text-[17px] max-w-xl leading-[1.85]">
+            AIが実際に侵入を試行する様子と、経営層向けレポートのサンプルをオンラインでご覧いただきます。
+            ご視聴後、貴社向けの仮説もその場でお伝えします。
           </p>
         </div>
       </section>
@@ -61,7 +57,7 @@ export default function DemoPage() {
           {/* Left: Benefits */}
           <div>
             <h2 className="text-2xl font-bold text-brand-text mb-6">
-              デモでわかること
+              デモで得られるもの
             </h2>
             <ul className="space-y-4">
               {demoFeatures.map((f) => (
@@ -76,9 +72,10 @@ export default function DemoPage() {
               ))}
             </ul>
             <div className="mt-10 p-6 bg-brand-section rounded-2xl border border-brand-border">
-              <p className="text-sm font-semibold text-brand-text mb-1">完全無料・秘密厳守</p>
+              <p className="text-sm font-semibold text-brand-text mb-1">秘密厳守・事前準備不要</p>
               <p className="text-sm text-brand-sub leading-relaxed">
-                費用は一切かかりません。いただいた情報はデモ準備にのみ使用します。
+                いただいた情報はデモ準備と当日のご説明にのみ使用します。
+                技術的な事前準備は不要です。
               </p>
             </div>
           </div>
@@ -173,7 +170,7 @@ export default function DemoPage() {
                   disabled={loading}
                   className="btn-grad btn-pulse w-full disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  {loading ? "送信中..." : "無料デモを申し込む"}
+                  {loading ? "送信中..." : "デモを申し込む"}
                 </button>
               </form>
             )}

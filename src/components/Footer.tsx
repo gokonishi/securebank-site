@@ -33,11 +33,13 @@ export default function Footer() {
             </p>
             <nav className="flex flex-col gap-3">
               {[
-                { href: "/", label: "トップ" },
+                { href: "/lp/ai-attack-simulation", label: "AI攻撃シミュレーション" },
                 { href: "/services", label: "サービス" },
-                { href: "/news", label: "お知らせ" },
+                { href: "/case-studies", label: "導入事例" },
                 { href: "/cyber-news", label: "サイバー攻撃ニュース" },
+                { href: "/news", label: "お知らせ" },
                 { href: "/company", label: "会社概要" },
+                { href: "/company/message", label: "代表挨拶" },
                 { href: "/contact", label: "お問い合わせ" },
               ].map((l) => (
                 <Link
@@ -54,16 +56,16 @@ export default function Footer() {
           {/* CTA */}
           <div>
             <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500 mb-5">
-              まずはご相談を
+              次のアクション
             </p>
             <p className="text-sm text-slate-400 mb-5 leading-relaxed">
-              初回相談は無料です。<br />現状のリスクを一緒に確認しましょう。
+              30分の無料相談で、貴社の<br />現状リスクを可視化します。
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 bg-gradient-brand text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity shadow-glow"
             >
-              無料相談はこちら
+              無料診断を試す
             </Link>
           </div>
         </div>

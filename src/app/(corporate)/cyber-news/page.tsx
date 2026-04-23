@@ -2,9 +2,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AIサイバー攻撃ニュース | セキュア・バンク株式会社",
+  title: "AIサイバー攻撃ニュース",
   description:
     "国内外の最新AIサイバー攻撃インシデント・脅威情報をキュレーション。IPA・JPCERT/CC・警察庁・海外メディアの情報をSecureBankが解説します。",
+  alternates: { canonical: "https://securebank.co.jp/cyber-news" },
 };
 
 type Source =

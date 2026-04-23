@@ -24,33 +24,71 @@ export default function ClosingCTA() {
             <div className="relative">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/15 border border-white/25 rounded-full mb-8 text-white text-[11px] font-bold tracking-widest uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                まずは現状把握から
+                次のアクションを選ぶ
               </div>
 
-              <h2 className="font-display font-extrabold text-[44px] md:text-[52px] tracking-tight text-white mb-6">
-                今のままで<br />大丈夫ですか？
+              <h2 className="font-display font-extrabold text-[44px] md:text-[52px] tracking-tight text-white mb-6 leading-tight">
+                次の取締役会で、<br />
+                &quot;破られませんでした&quot;と<br className="md:hidden" />報告できますか。
               </h2>
 
-              <p className="text-[18px] text-blue-100 leading-[1.8] mb-3 max-w-2xl mx-auto">
-                セキュアバンクは、AI時代に合わせた新しいセキュリティ基盤として、
-                攻撃の再現から防御・運用まで支援します。
-              </p>
-              <p className="text-[16px] text-blue-200 leading-[1.8] mb-12 max-w-xl mx-auto">
-                専門担当者がいなくても、限られた予算でも、段階的に始められます。
+              <p className="text-[17px] text-blue-100 leading-[1.8] mb-12 max-w-2xl mx-auto">
+                検証なき対策は、経営判断ではなく願望です。検討フェーズに合わせて3つの入口を用意しています。
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-blue font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-xl text-[16px]"
+                  className="group rounded-2xl bg-white p-6 hover:shadow-2xl transition-shadow"
                 >
-                  無料相談を申し込む
+                  <p className="text-[11px] font-bold tracking-widest text-brand-blue uppercase mb-2">
+                    最も踏みやすい
+                  </p>
+                  <p className="font-display font-bold text-[18px] text-brand-text mb-2">
+                    30分で、現状リスクを可視化する
+                  </p>
+                  <p className="text-[13px] text-brand-sub leading-relaxed mb-4">
+                    公開資産と侵入仮説の簡易レポートを無償でお渡しします。
+                  </p>
+                  <span className="text-brand-blue font-bold text-[13px] group-hover:translate-x-0.5 inline-block transition-transform">
+                    無料診断を試す →
+                  </span>
                 </Link>
+
                 <Link
-                  href="/services"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 border border-white/25 text-white font-semibold rounded-xl hover:bg-white/20 transition-colors text-[16px]"
+                  href="/demo"
+                  className="group rounded-2xl bg-white/10 backdrop-blur border border-white/20 p-6 hover:bg-white/15 transition-colors"
                 >
-                  サービスを見る →
+                  <p className="text-[11px] font-bold tracking-widest text-blue-200 uppercase mb-2">
+                    比較検討層
+                  </p>
+                  <p className="font-display font-bold text-[18px] text-white mb-2">
+                    15分で、攻撃再現デモを見る
+                  </p>
+                  <p className="text-[13px] text-blue-100 leading-relaxed mb-4">
+                    実際の攻撃シナリオとレポート形式をオンラインでご紹介します。
+                  </p>
+                  <span className="text-white font-bold text-[13px] group-hover:translate-x-0.5 inline-block transition-transform">
+                    デモを見る →
+                  </span>
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className="group rounded-2xl bg-white/10 backdrop-blur border border-white/20 p-6 hover:bg-white/15 transition-colors"
+                >
+                  <p className="text-[11px] font-bold tracking-widest text-blue-200 uppercase mb-2">
+                    決裁者層
+                  </p>
+                  <p className="font-display font-bold text-[18px] text-white mb-2">
+                    経営会議用レポートを受け取る
+                  </p>
+                  <p className="text-[13px] text-blue-100 leading-relaxed mb-4">
+                    経営層・稟議に使える形でリスクと必要投資を翻訳します。
+                  </p>
+                  <span className="text-white font-bold text-[13px] group-hover:translate-x-0.5 inline-block transition-transform">
+                    個別相談へ →
+                  </span>
                 </Link>
               </div>
 

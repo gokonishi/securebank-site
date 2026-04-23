@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
         destination: "/lp/ai-attack-simulation",
         permanent: true,
       },
+      {
+        source: "/pricing",
+        destination: "/services",
+        permanent: true,
+      },
     ];
   },
 };

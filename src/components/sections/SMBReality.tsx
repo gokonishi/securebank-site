@@ -1,11 +1,11 @@
 import { FadeIn, StaggerGrid, StaggerItem } from "@/components/ui/motion";
 
 const pains = [
-  { title: "セキュリティ担当がいない", desc: "情報システム部門がない、またはIT担当者が兼任で手一杯という企業がほとんどです。" },
-  { title: "何をやればいいかわからない", desc: "「対策が必要」とはわかっていても、何から手をつければよいかが不明確なままです。" },
-  { title: "予算が限られている", desc: "大企業向けのSOCや診断サービスは高額で、中堅中小には現実的な選択肢ではありません。" },
-  { title: "日々の業務で手一杯", desc: "本業を回しながらセキュリティ対策まで手が回らず、後回しになりがちです。" },
-  { title: "事故が起きれば事業継続に打撃", desc: "情報漏洩・サービス停止・取引先への影響など、一度の被害が経営に直結します。" },
+  { title: "セキュリティ担当がいない", desc: "情シス部門がない、または兼任で手一杯。対策の必要性は感じつつも、動ける人が社内にいません。" },
+  { title: "何から始めるべきか判断できない", desc: "製品カタログを並べられても、自社にとって本当に必要なものが何かが見えない状態が続きます。" },
+  { title: "「やっている風」で止まっている", desc: "ウイルス対策・バックアップ・一度の診断で「対策済」としてしまい、実際に破られるかは検証されていません。" },
+  { title: "取引先・顧客からの要求は増える一方", desc: "サプライチェーン要件・ISMS・個人情報保護。監査や取引条件でセキュリティ水準が問われる場面が急増しています。" },
+  { title: "一度の被害が、事業継続に直結する", desc: "大企業と違い、1回のランサム被害・情報漏えいで資金繰り・信用・取引が同時に崩れます。" },
 ];
 
 export default function SMBReality() {
@@ -14,17 +14,18 @@ export default function SMBReality() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <FadeIn>
-            <span className="tag mb-6">中堅中小企業の実情</span>
-            <h2 className="font-display font-bold text-[44px] tracking-tight text-brand-text mt-5 mb-6">
-              守りたくても、<br />守れない
+            <span className="tag mb-6">02 / SMB</span>
+            <h2 className="font-display font-bold text-[44px] tracking-tight text-brand-text mt-5 mb-6 leading-tight">
+              狙われやすく、<br />
+              <span className="text-gradient">守りづらい</span>
             </h2>
             <p className="text-[17px] text-brand-sub leading-[1.8] mb-5">
-              大企業はセキュリティ専門部門を持ち、多額の予算で対策できます。
-              しかし中堅中小企業の多くは、それができないのが現実です。
+              大企業はセキュリティ専門部門と多額の予算を持ちます。
+              中堅・中小企業は、同じ脅威を、限られた体制で受け止めねばなりません。
             </p>
             <p className="text-[17px] text-brand-sub leading-[1.8]">
-              専門家がいなくても導入でき、継続できる現実的な仕組みが必要です。
-              セキュアバンクは、そこに特化しています。
+              専門家がいなくても導入でき、経営が意思決定できる材料として機能する仕組みが必要です。
+              セキュア・バンクは、そこに特化しています。
             </p>
           </FadeIn>
 
