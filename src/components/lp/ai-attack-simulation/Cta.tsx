@@ -50,12 +50,15 @@ export default function Cta() {
 
           {/* 2 CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://8.219.75.117/login.html"
+            <LpCtaLink
+              event="bottom_cta_click"
+              section="bottom_primary"
+              label="デモを予約する"
+              href="/contact?purpose=demo"
               className="inline-flex items-center justify-center px-8 py-4 bg-red-500 hover:bg-red-600 text-white font-bold text-base rounded transition-colors duration-150 shadow-[0_0_40px_rgba(239,68,68,0.4)]"
             >
               デモを予約する →
-            </a>
+            </LpCtaLink>
             <LpCtaLink
               event="bottom_cta_click"
               section="bottom_secondary"
