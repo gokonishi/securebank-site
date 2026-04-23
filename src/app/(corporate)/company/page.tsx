@@ -140,7 +140,7 @@ export default function CompanyPage() {
 
         <FadeIn className="mt-16 text-center">
           <Link href="/contact" className="btn-grad btn-pulse">
-            無料診断を申し込む
+            お問い合わせ
           </Link>
         </FadeIn>
       </div>

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "お知らせ",
   description:
-    "セキュア・バンク株式会社からのサービスアップデート、新機能リリース、導入事例などの最新情報をお届けします。",
+    "セキュア・バンク株式会社からのサービスアップデート、新機能リリース、プレスリリースなどの最新情報をお届けします。",
   alternates: { canonical: "https://securebank.co.jp/news" },
 };
 
@@ -51,7 +51,7 @@ export default function NewsPage() {
             SecureBankからの<br />お知らせ
           </h1>
           <p className="mt-4 text-brand-sub text-[17px] max-w-xl leading-relaxed">
-            サービスアップデート・導入事例・プレスリリースなど最新情報をお届けします。
+            サービスアップデート・プレスリリースなど最新情報をお届けします。
           </p>
         </div>
       </section>

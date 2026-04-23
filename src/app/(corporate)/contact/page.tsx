@@ -21,13 +21,13 @@ const purposeOptions: {
   {
     id: "diagnosis",
     badge: "最も踏みやすい",
-    title: "無料診断を試す",
-    desc: "公開資産から見える侵入経路の仮説を、簡易レポートで無償提供します。",
+    title: "現状のリスクを相談する",
+    desc: "公開資産や想定される侵入経路をヒアリングし、優先度を整理してお伝えします。",
   },
   {
     id: "demo",
     badge: "比較検討層",
-    title: "15分デモを見る",
+    title: "攻撃再現デモを見る",
     desc: "AI攻撃シミュレーションのライブとレポート形式をオンラインで紹介します。",
   },
   {
@@ -40,7 +40,7 @@ const purposeOptions: {
 
 const trustPoints = [
   { label: "上場企業グループ", sub: "日本エンタープライズ" },
-  { label: "30分で完結", sub: "初回オンライン" },
+  { label: "オンラインで完結", sub: "初回ヒアリング" },
   { label: "秘密厳守", sub: "NDA即時対応可" },
   { label: "2営業日以内", sub: "担当者よりご連絡" },
 ];
@@ -144,7 +144,7 @@ function ContactPageInner() {
             Contact
           </span>
           <h1 className="font-display font-extrabold text-[40px] md:text-[52px] tracking-tight leading-[1.15] mb-5">
-            30分で、<br />
+            オンラインで、<br />
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               現状リスクを可視化する。
             </span>

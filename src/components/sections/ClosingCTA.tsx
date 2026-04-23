@@ -45,13 +45,13 @@ export default function ClosingCTA() {
                     最も踏みやすい
                   </p>
                   <p className="font-display font-bold text-[18px] text-brand-text mb-2">
-                    30分で、現状リスクを可視化する
+                    現状のリスクを相談する
                   </p>
                   <p className="text-[13px] text-brand-sub leading-relaxed mb-4">
-                    公開資産と侵入仮説の簡易レポートを無償でお渡しします。
+                    公開資産と侵入仮説をヒアリングし、優先度をご提示します。
                   </p>
                   <span className="text-brand-blue font-bold text-[13px] group-hover:translate-x-0.5 inline-block transition-transform">
-                    無料診断を試す →
+                    お問い合わせ →
                   </span>
                 </Link>
 
@@ -63,7 +63,7 @@ export default function ClosingCTA() {
                     比較検討層
                   </p>
                   <p className="font-display font-bold text-[18px] text-white mb-2">
-                    15分で、攻撃再現デモを見る
+                    攻撃再現デモを見る
                   </p>
                   <p className="text-[13px] text-blue-100 leading-relaxed mb-4">
                     実際の攻撃シナリオとレポート形式をオンラインでご紹介します。

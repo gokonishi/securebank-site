@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const demoFeatures = [
-  "AI攻撃シミュレーションのライブデモ（15分）",
+  "AI攻撃シミュレーションのライブデモ",
   "実際の攻撃シナリオと証拠付きレポートのサンプル",
   "貴社の公開資産から見える侵入経路の仮説",
   "Layer 0〜5 の多層防御の検証ポイント",
@@ -43,7 +43,7 @@ export default function DemoPage() {
             Demo
           </p>
           <h1 className="text-4xl md:text-5xl font-extrabold font-display text-brand-text leading-[1.15] mb-5">
-            15分で、<br />攻撃再現デモを見る。
+            オンラインで、<br />攻撃再現デモを見る。
           </h1>
           <p className="text-brand-sub text-[17px] max-w-xl leading-[1.85]">
             AIが実際に侵入を試行する様子と、経営層向けレポートのサンプルをオンラインでご覧いただきます。

@@ -50,11 +50,11 @@ export default function LpShellHeader() {
           <LpCtaLink
             event="header_cta_click"
             section="header"
-            label="無料相談する"
+            label="お問い合わせ"
             href="/contact"
             className="inline-flex items-center justify-center px-4 py-2 text-sm font-bold text-white bg-red-500 rounded hover:bg-red-600 transition-colors duration-150"
           >
-            無料相談する →
+            お問い合わせ →
           </LpCtaLink>
 
           {/* Mobile hamburger */}

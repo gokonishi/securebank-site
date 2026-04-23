@@ -3,16 +3,16 @@ import { FadeIn, StaggerGrid, StaggerItem } from "@/components/ui/motion";
 const items = [
   {
     title: "スピード",
-    metric: "数日",
-    label: "で初回結果",
-    desc: "従来は数ヶ月かかっていた実侵入の検証を、ラウンド単位で高速実行。意思決定を遅らせません。",
+    metric: "短サイクル",
+    label: "で検証を回せる",
+    desc: "従来は長期化しがちな実侵入の検証を、仮説→試行→再検証の短いサイクルで回せる設計に。意思決定を遅らせません。",
     accent: "from-blue-500 to-blue-600",
   },
   {
     title: "網羅性",
-    metric: "20",
-    label: "ラウンド連続試行",
-    desc: "人間の赤チームでは到達しない組み合わせ攻撃まで、AIが機械的に網羅。穴を残しません。",
+    metric: "AI自律",
+    label: "で攻撃連鎖を再現",
+    desc: "人間のレッドチームでは到達しにくい組み合わせ攻撃まで、AIが仮説を立てて検証。前の結果を踏まえて次の手を自律的に選びます。",
     accent: "from-indigo-500 to-indigo-600",
   },
   {
@@ -52,7 +52,7 @@ export default function AIAdvantage() {
         <FadeIn className="max-w-xl mb-16">
           <span className="tag mb-5">05 / Advantage</span>
           <h2 className="font-display font-bold text-[44px] tracking-tight text-brand-text mt-5 mb-5 leading-tight">
-            人間の赤チームでは、<br />
+            人間のレッドチームでは、<br />
             <span className="text-gradient">もう追いつけない。</span>
           </h2>
           <p className="text-[17px] text-brand-sub leading-[1.8]">

@@ -35,7 +35,6 @@ export default function Footer() {
               {[
                 { href: "/lp/ai-attack-simulation", label: "AI攻撃シミュレーション" },
                 { href: "/services", label: "サービス" },
-                { href: "/case-studies", label: "導入事例" },
                 { href: "/cyber-news", label: "サイバー攻撃ニュース" },
                 { href: "/news", label: "お知らせ" },
                 { href: "/company", label: "会社概要" },
@@ -59,13 +58,13 @@ export default function Footer() {
               次のアクション
             </p>
             <p className="text-sm text-slate-400 mb-5 leading-relaxed">
-              30分の無料相談で、貴社の<br />現状リスクを可視化します。
+              現状のリスクと優先度を、<br />初回ヒアリングでお伝えします。
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 bg-gradient-brand text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity shadow-glow"
             >
-              無料診断を試す
+              お問い合わせ
             </Link>
           </div>
         </div>

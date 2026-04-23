@@ -100,7 +100,7 @@ export default function Value() {
           >
             AI攻撃シミュレーションを相談する →
           </LpCtaLink>
-          <p className="text-xs text-slate-500 mt-4">初回相談は無料です</p>
+          <p className="text-xs text-slate-500 mt-4">まずはお気軽にご相談ください</p>
         </motion.div>
       </div>
     </section>

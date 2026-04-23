@@ -162,10 +162,10 @@ export default async function CyberNewsPage() {
 
         <div className="mt-16 pt-10 border-t border-brand-border text-center">
           <p className="text-brand-sub text-sm mb-6">
-            自社のセキュリティリスクを確認したい方は、無料診断をご利用ください。
+            自社のセキュリティリスクを確認したい方は、お気軽にご相談ください。
           </p>
           <Link href="/contact" className="btn-grad btn-pulse inline-flex">
-            無料セキュリティ相談を申し込む
+            お問い合わせ
           </Link>
         </div>
       </section>

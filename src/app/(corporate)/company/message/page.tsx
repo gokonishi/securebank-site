@@ -62,7 +62,7 @@ export default function MessagePage() {
             </p>
             <p className="text-[17px] text-brand-sub leading-[1.95] mb-5">
               チェックリストではなく、実際の侵入試行を。<br />
-              人間の赤チームではなく、AIによる網羅的な攻撃再現を。<br />
+              人間のレッドチームではなく、AIによる網羅的な攻撃再現を。<br />
               &quot;守れているはず&quot;ではなく、&quot;破られなかった証拠&quot;を。
             </p>
             <p className="text-[17px] text-brand-sub leading-[1.95] mb-12">
@@ -161,14 +161,14 @@ export default function MessagePage() {
                 現状のリスクを、一緒に可視化しませんか。
               </h2>
               <p className="text-blue-100 text-[15px] mb-8 max-w-xl mx-auto leading-relaxed">
-                30分の無料相談で、貴社の公開資産と侵入経路の仮説をお伝えします。
+                初回ヒアリングで、貴社の公開資産と侵入経路の仮説をお伝えします。
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-blue font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-xl text-[15px]"
                 >
-                  無料診断を申し込む
+                  お問い合わせ
                 </Link>
                 <Link
                   href="/lp/ai-attack-simulation"
