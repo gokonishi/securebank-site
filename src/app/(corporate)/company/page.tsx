@@ -114,9 +114,33 @@ export default function CompanyPage() {
           </StaggerGrid>
         </div>
 
+        {/* Message link */}
+        <FadeIn delay={0.1} className="mt-24">
+          <Link
+            href="/company/message"
+            className="block rounded-3xl border border-brand-border hover:border-brand-blue transition-colors p-10 group"
+          >
+            <div className="flex items-center justify-between gap-8">
+              <div>
+                <span className="tag mb-4">Message</span>
+                <h3 className="font-display font-bold text-[26px] text-brand-text mb-2 mt-3">
+                  代表挨拶
+                </h3>
+                <p className="text-[15px] text-brand-sub leading-relaxed max-w-xl">
+                  「攻撃される前提で、事業を守る」── 代表取締役 小西 剛から、
+                  AI時代のセキュリティに懸ける想いをお伝えします。
+                </p>
+              </div>
+              <svg className="w-8 h-8 text-brand-blue group-hover:translate-x-1 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </Link>
+        </FadeIn>
+
         <FadeIn className="mt-16 text-center">
           <Link href="/contact" className="btn-grad btn-pulse">
-            お問い合わせ・無料相談
+            無料診断を申し込む
           </Link>
         </FadeIn>
       </div>

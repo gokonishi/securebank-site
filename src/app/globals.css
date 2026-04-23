@@ -32,6 +32,22 @@
     background-clip: text;
   }
 
+  /* Section backgrounds */
+  .section-white  { background-color: #ffffff; }
+  .section-gray   { background-color: #F7F8FC; }
+  .section-dark   {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 45%, #7c3aed 100%);
+  }
+
+  /* Dot-grid background for hero */
+  .dot-grid {
+    background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
+
+/* ── Component classes (lower priority than utilities so `hidden`/`md:*` can override) ── */
+@layer components {
   /* Cards */
   .card {
     background: #ffffff;
@@ -60,13 +76,6 @@
     border-radius: 999px;
     border: 1px solid #BFDBFE;
     font-family: var(--font-inter), sans-serif;
-  }
-
-  /* Section backgrounds */
-  .section-white  { background-color: #ffffff; }
-  .section-gray   { background-color: #F7F8FC; }
-  .section-dark   {
-    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 45%, #7c3aed 100%);
   }
 
   /* Gradient button */
@@ -119,11 +128,5 @@
   }
   .btn-pulse {
     animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  /* Dot-grid background for hero */
-  .dot-grid {
-    background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
-    background-size: 28px 28px;
   }
 }

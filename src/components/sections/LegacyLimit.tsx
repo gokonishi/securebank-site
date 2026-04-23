@@ -1,10 +1,10 @@
 import { FadeIn, StaggerGrid, StaggerItem } from "@/components/ui/motion";
 
 const limits = [
-  { label: "脆弱性診断", issue: "指摘が中心", color: "bg-yellow-400", detail: "「どこが危ないか」はわかっても、実際に侵入できるかの検証には至らない。指摘への対応も自社任せになりがちです。" },
-  { label: "ペネトレーションテスト（従来型）", issue: "高額・単発・属人的", color: "bg-orange-400", detail: "専門家の工数ベースで費用が高く、年一度が精一杯。担当エンジニアの経験値によって品質が変わります。" },
-  { label: "SOC（セキュリティ運用）", issue: "導入ハードルが高い", color: "bg-red-400", detail: "導入・運用費用ともに大企業向けの水準で、中堅中小が本格運用するのは現実的ではないケースがほとんど。" },
-  { label: "共通課題", issue: "点在・継続困難", color: "bg-slate-300", detail: "一度きりで終わりやすく、担当者が変わると引き継がれない。侵入されやすい経路が可視化されないまま残ります。" },
+  { label: "脆弱性診断", issue: "指摘で止まる", color: "bg-yellow-400", detail: "「どこが危ないか」はわかる。しかし「実際に侵入できるか」までは検証されない。結果、対応優先度が判断できません。" },
+  { label: "ペネトレーションテスト（従来型）", issue: "単発・属人的", color: "bg-orange-400", detail: "年1〜2回の単発実施が精一杯。担当者の経験値で品質が変わり、継続的な再検証サイクルが回りません。" },
+  { label: "SOC（従来型）", issue: "検知はするが検証しない", color: "bg-red-400", detail: "アラートは出ても、「防御壁が実際に機能しているか」を攻撃側視点で確かめる手段がありません。" },
+  { label: "共通課題", issue: "「破られない証拠」が出ない", color: "bg-slate-300", detail: "どの施策も単体では「対策した」までしか言えません。経営会議で求められる「破られなかった証拠」までは届かないのです。" },
 ];
 
 export default function LegacyLimit() {
@@ -12,13 +12,14 @@ export default function LegacyLimit() {
     <section className="section-white py-28">
       <div className="max-w-7xl mx-auto px-6">
         <FadeIn className="max-w-xl mb-16">
-          <span className="tag mb-5">従来型の課題</span>
-          <h2 className="font-display font-bold text-[44px] tracking-tight text-brand-text mt-5 mb-5">
-            従来型の対策だけでは<br />足りない
+          <span className="tag mb-5">03 / Gap</span>
+          <h2 className="font-display font-bold text-[44px] tracking-tight text-brand-text mt-5 mb-5 leading-tight">
+            「やっている」と<br />
+            <span className="text-gradient">「守れている」は、違う。</span>
           </h2>
           <p className="text-[17px] text-brand-sub leading-[1.8]">
-            既存のセキュリティサービスにはそれぞれ価値がある一方で、
-            中堅中小企業が継続的に活用するには乗り越えにくい壁があります。
+            既存のセキュリティサービスにはそれぞれ価値があります。
+            ただ、単体ではAI攻撃の速度と網羅性に追いつけなくなりました。&quot;検証&quot;のレイヤーが、決定的に欠けているのです。
           </p>
         </FadeIn>
 

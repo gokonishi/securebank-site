@@ -2,9 +2,10 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SecureBankからのお知らせ | セキュア・バンク株式会社",
+  title: "お知らせ",
   description:
     "セキュア・バンク株式会社からのサービスアップデート、新機能リリース、導入事例などの最新情報をお届けします。",
+  alternates: { canonical: "https://securebank.co.jp/news" },
 };
 
 type Category = "サービス情報" | "導入事例" | "プレスリリース" | "お知らせ";
