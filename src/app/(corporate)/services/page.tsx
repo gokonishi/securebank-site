@@ -5,7 +5,7 @@ import { FadeIn, StaggerGrid, StaggerItem } from "@/components/ui/motion";
 export const metadata: Metadata = {
   title: "サービス｜AI攻撃シミュレーション",
   description:
-    "「対策した」ではなく「破られなかった」証拠を。20ラウンドの攻撃検証と Layer 0〜5 の多層防御で、AI時代のセキュリティを再定義します。",
+    "「対策した」ではなく「破られなかった」証拠を。AI攻撃シミュレーションと Layer 0〜5 の多層検証で、AI時代のセキュリティを再定義します。",
   alternates: {
     canonical: "https://securebank.co.jp/services",
   },
@@ -40,7 +40,7 @@ const compareRows = [
   { axis: "頻度", legacy: "年1〜2回", next: "継続・オンデマンド" },
   { axis: "網羅性", legacy: "事前合意の範囲のみ", next: "公開資産を自動列挙し全面検証" },
   { axis: "再現度", legacy: "脆弱性の有無チェック", next: "実際の侵入を再現" },
-  { axis: "速度", legacy: "数週間〜数ヶ月", next: "ラウンド単位で高速実行" },
+  { axis: "速度", legacy: "数週間〜数ヶ月", next: "仮説→検証→再試行を短サイクルで" },
   { axis: "アウトプット", legacy: "所見リスト", next: "経営会議で使える証拠付きレポート" },
 ];
 
@@ -63,27 +63,27 @@ const phases = [
   },
 ];
 
-// ── 20ラウンド ──
+// ── AIが自律的に検証を深掘りするステップ ──
 const rounds = [
   {
-    range: "Round 1–5",
+    range: "STEP 1",
     title: "外周の脆弱性",
-    detail: "公開資産の基礎的な設定不備・既知脆弱性を機械的に突破。",
+    detail: "公開資産の設定不備・既知脆弱性を起点に、最初の侵入口を機械的に洗い出します。",
   },
   {
-    range: "Round 6–10",
+    range: "STEP 2",
     title: "認証・認可の突破",
-    detail: "パスワードスプレー、セッション奪取、認可バイパスを試行。",
+    detail: "前工程の結果から次の仮説を立て、パスワードスプレー・セッション奪取・認可バイパスを試行。",
   },
   {
-    range: "Round 11–15",
+    range: "STEP 3",
     title: "内部侵入・横移動",
-    detail: "侵入後のラテラルムーブメントで内部ネットワークを踏破。",
+    detail: "侵入後のラテラルムーブメントで、どこまで被害が広がり得るかを自律的に追跡します。",
   },
   {
-    range: "Round 16–20",
+    range: "STEP 4",
     title: "特権昇格・データ窃取",
-    detail: "ドメイン特権の奪取と、重要データの実際の持ち出し可否を検証。",
+    detail: "ドメイン特権の奪取と、重要データの実際の持ち出し可否までを検証します。",
   },
 ];
 
@@ -131,11 +131,11 @@ const layers = [
 const merits = [
   {
     title: "スピード",
-    detail: "数ヶ月かかる従来診断を、数日に短縮。意思決定の遅れを生みません。",
+    detail: "長期化しがちな検証を、仮説→試行→再検証の短いサイクルで回せる設計に。意思決定を遅らせません。",
   },
   {
     title: "網羅性",
-    detail: "人手では見つけられない組み合わせ攻撃まで、機械的に網羅します。",
+    detail: "人手では見つけにくい組み合わせ攻撃まで、AIが仮説を広げながら検証します。",
   },
   {
     title: "実効性",
@@ -146,14 +146,14 @@ const merits = [
 // ── 導入後タイムライン ──
 const timeline = [
   { when: "Day 0", title: "キックオフ・資産棚卸", detail: "対象範囲の合意と、AIによる公開資産の自動列挙を実施。" },
-  { when: "Week 2", title: "初回ラウンド結果共有", detail: "初回の侵入試行結果とリスクを、経営向けサマリーで報告。" },
+  { when: "Week 2", title: "初回検証結果の共有", detail: "初回の侵入試行結果とリスクを、経営向けサマリーで報告。" },
   { when: "Month 1", title: "改善アクションと再検証", detail: "優先度順に対策を実施し、該当経路の再検証で効果を確認。" },
-  { when: "Month 3", title: "取締役会で報告", detail: "20ラウンドの結果を、「破られなかった」証拠として経営報告。" },
+  { when: "Month 3", title: "取締役会で報告", detail: "これまでの検証結果を、「破られなかった」証拠として経営報告。" },
 ];
 
 // ── 補完サービス ──
 const supports = [
-  { title: "ASM（公開資産監視）", desc: "新規資産・変化をリアルタイムで検知し、シミュレーションに連動。" },
+  { title: "ASM（公開資産監視）", desc: "新規資産・変化を継続的に検知し、シミュレーションに連動。" },
   { title: "SOC / MDR", desc: "24/365 の監視と一次対応。検知即初動の体制を外部で構築。" },
   { title: "セキュアバックアップ", desc: "ランサムウェア前提のオフライン保全と、復元テストの実施。" },
   { title: "サイバー保険", desc: "インシデント時の調査・賠償・事業中断損失を経済的に補完。" },
@@ -204,7 +204,7 @@ const serviceJsonLd = {
   },
   areaServed: { "@type": "Country", name: "JP" },
   description:
-    "AIが攻撃シナリオを自動生成し、20ラウンド連続で実侵入を試行。Layer 0〜5を横断検証し、経営会議で使える証拠付きレポートを提供します。",
+    "AIが攻撃シナリオを自動生成し、仮説→検証→自律判断を繰り返しながら Layer 0〜5 を横断検証。経営会議で使える証拠付きレポートを提供します。",
 };
 
 export default function ServicesPage() {
@@ -250,7 +250,7 @@ export default function ServicesPage() {
                 href="/contact?purpose=diagnosis"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-text font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-xl text-[15px]"
               >
-                無料診断を申し込む
+                お問い合わせ
               </Link>
               <Link
                 href="/lp/ai-attack-simulation"
@@ -384,14 +384,13 @@ export default function ServicesPage() {
               04 / 20 Rounds
             </span>
             <h2 className="font-display font-bold text-[36px] md:text-[44px] tracking-tight mt-4 mb-5 leading-tight">
-              1回では足りない。<br />
+              AIが自律的に、<br />
               <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                20ラウンドで、殴り続ける。
+                検証を深掘りする。
               </span>
             </h2>
             <p className="text-[16px] text-white/75 max-w-2xl mx-auto leading-[1.85]">
-              攻撃者は一度で諦めません。私たちも、一度では終わらせません。
-              段階的に強度を上げながら、20ラウンドの攻撃を連続で再現します。
+              攻撃者は一度で諦めません。AIが仮説を立てて検証し、前工程の結果を踏まえて次に調べるべきアクションを自律的に判断しながら、侵入経路を再現します。
             </p>
           </FadeIn>
 
@@ -609,15 +608,15 @@ export default function ServicesPage() {
             {[
               {
                 badge: "最も踏みやすい",
-                title: "無料診断",
-                detail: "公開資産を自動列挙し、侵入経路の仮説を含む簡易レポートを無償提供。",
-                cta: "無料診断を申し込む",
+                title: "現状のリスクを相談する",
+                detail: "公開資産と想定される侵入経路をヒアリングし、優先度を整理してお伝えします。",
+                cta: "お問い合わせ",
                 href: "/contact?purpose=diagnosis",
                 primary: true,
               },
               {
                 badge: "比較検討層",
-                title: "15分デモ",
+                title: "攻撃再現デモを見る",
                 detail: "実際の攻撃再現と、レポートのサンプルをオンラインでご覧いただきます。",
                 cta: "デモを見る",
                 href: "/demo",

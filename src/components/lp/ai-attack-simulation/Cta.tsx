@@ -44,7 +44,7 @@ export default function Cta() {
             まず確認しませんか？
           </h2>
           <p className="text-slate-400 text-base md:text-lg leading-relaxed mb-10">
-            30分の無料相談で、現状と優先度をご提示します。<br />
+            オンラインでのヒアリングで、現状と優先度をご提示します。<br />
             導入の強制は一切ありません。
           </p>
 
@@ -71,7 +71,7 @@ export default function Cta() {
           </div>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-2 justify-center items-center text-xs text-slate-500">
-            <span>✓ 費用は一切かかりません</span>
+            <span>✓ 秘密厳守・NDA対応可</span>
             <span className="hidden sm:inline">・</span>
             <span>✓ 無理な営業はいたしません</span>
             <span className="hidden sm:inline">・</span>

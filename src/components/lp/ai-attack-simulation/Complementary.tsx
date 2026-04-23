@@ -72,11 +72,11 @@ export default function Complementary() {
           <LpCtaLink
             event="mid_cta_click"
             section="complementary"
-            label="まとめて無料相談する"
+            label="まとめて相談する"
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-4 border border-white/30 hover:bg-white/5 text-white font-semibold text-sm rounded transition-colors duration-150"
           >
-            まとめて無料相談する →
+            まとめて相談する →
           </LpCtaLink>
         </motion.div>
       </div>

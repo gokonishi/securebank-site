@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "15分デモ｜攻撃再現とレポート形式をご覧いただく",
+  title: "攻撃再現デモ｜攻撃再現とレポート形式をご覧いただく",
   description:
-    "AI攻撃シミュレーションのライブデモ（15分）。攻撃再現、証拠付きレポートのサンプル、Layer 0〜5 の検証ポイントをオンラインでご紹介します。",
+    "AI攻撃シミュレーションのライブデモ。攻撃再現、証拠付きレポートのサンプル、Layer 0〜5 の検証ポイントをオンラインでご紹介します。",
   alternates: { canonical: "https://securebank.co.jp/demo" },
 };
 

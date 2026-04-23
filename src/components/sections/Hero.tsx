@@ -76,7 +76,7 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-4"
             >
               <Link href="/contact" className="btn-grad btn-pulse">
-                無料診断を試す
+                お問い合わせ
               </Link>
               <Link href="/lp/ai-attack-simulation" className="btn-outline">
                 AI攻撃シミュレーションを見る →

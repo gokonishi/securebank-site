@@ -64,11 +64,11 @@ export default function Hero() {
           <LpCtaLink
             event="hero_cta_click"
             section="hero_primary"
-            label="無料で状況を確認する"
+            label="現状のリスクを相談する"
             href="/contact"
             className="inline-flex items-center justify-center px-8 py-4 bg-red-500 hover:bg-red-600 text-white font-bold text-base rounded transition-colors duration-150 shadow-[0_0_30px_rgba(239,68,68,0.4)]"
           >
-            無料で状況を確認する →
+            現状のリスクを相談する →
           </LpCtaLink>
           <a
             href="#limits"

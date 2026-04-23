@@ -9,7 +9,7 @@ import Cta from "@/components/lp/ai-attack-simulation/Cta";
 const LP_URL = "https://securebank.co.jp/lp/ai-attack-simulation";
 const LP_TITLE = "AI攻撃シミュレーション｜年1回の診断では、もう守れません";
 const LP_DESCRIPTION =
-  "攻撃者はすでにAIを使っています。年1回の脆弱性診断では守れない時代に、攻撃者視点で「本当に侵入できるか」を再現するAI攻撃シミュレーション。中堅中小企業の経営リスクを低減。30分の無料相談受付中。";
+  "攻撃者はすでにAIを使っています。年1回の脆弱性診断では守れない時代に、攻撃者視点で「本当に侵入できるか」を再現するAI攻撃シミュレーション。中堅中小企業の経営リスクを低減。オンライン相談受付中。";
 
 export const metadata: Metadata = {
   title: LP_TITLE,

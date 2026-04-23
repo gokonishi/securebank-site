@@ -43,10 +43,10 @@ export default function FloatingCta() {
           </span>
           <div className="text-left">
             <p className="text-[10px] font-bold tracking-widest text-brand-blue uppercase">
-              30分で完結
+              オンラインで相談
             </p>
             <p className="font-display font-bold text-[14px] text-brand-text">
-              無料診断を試す
+              お問い合わせ
             </p>
           </div>
         </Link>
@@ -79,7 +79,7 @@ export default function FloatingCta() {
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
         </svg>
-        無料診断を試す
+        お問い合わせ
       </Link>
     </div>
   );

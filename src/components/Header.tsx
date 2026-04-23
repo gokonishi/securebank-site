@@ -14,7 +14,6 @@ const navItems: NavItem[] = [
     highlight: true,
   },
   { href: "/services", label: "サービス" },
-  { href: "/case-studies", label: "導入事例" },
   {
     label: "インサイト",
     children: [
@@ -111,7 +110,7 @@ export default function Header() {
           href="/contact"
           className="hidden md:inline-flex btn-grad btn-pulse !py-2 !px-5 !text-sm"
         >
-          無料診断を試す
+          お問い合わせ
         </Link>
 
         {/* Mobile toggle */}
@@ -171,7 +170,7 @@ export default function Header() {
               className="btn-grad mt-3 !text-sm !py-2.5"
               onClick={() => setOpen(false)}
             >
-              無料診断を試す
+              お問い合わせ
             </Link>
           </nav>
         </div>
