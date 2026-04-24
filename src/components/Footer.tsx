@@ -40,6 +40,7 @@ export default function Footer() {
                 { href: "/company", label: "会社概要" },
                 { href: "/company/message", label: "代表挨拶" },
                 { href: "/contact", label: "お問い合わせ" },
+                { href: "/security-talent", label: "セキュリティ人材支援" },
               ].map((l) => (
                 <Link
                   key={l.href}
