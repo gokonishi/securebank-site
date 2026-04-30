@@ -55,13 +55,14 @@ export async function POST(request: NextRequest) {
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return new Response(JSON.stringify({ error: "有効なメールアドレスを入力してください" }), { status: 400 });
 
   // ジョブを作成
+  console.log("POST /api/scan called", { domain, email });
   const { data: job, error } = await supabase
     .from("scan_jobs")
     .insert({ domain, email, status: "running" })
     .select()
     .single();
 
-  if (error || !job) return new Response(JSON.stringify({ error: "診断の開始に失敗しました" }), { status: 500 });
+  if (error || !job) { console.error("DB Error:", error); return new Response(JSON.stringify({ error: "DB error: " + JSON.stringify(error) }), { status: 500 }); } if (false) return new Response(JSON.stringify({ error: "診断の開始に失敗しました" }), { status: 500 });
 
   // バックグラウンドで診断実行
   (async () => {
