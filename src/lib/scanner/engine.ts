@@ -11,9 +11,8 @@ const SYSTEM_PROMPT = `あなたはWebセキュリティの専門家です。与
 1. fetch_headers でHTTPヘッダーを確認（HSTS, CSP, X-Frame-Options等）
 2. check_path_exposure で管理パスの露出確認（/admin, /api, /.env, /.git 等）
 3. fetch_page で robots.txt と主要ページのコンテンツ確認
-4. 管理系APIが見つかれば check_rate_limit でブルートフォース耐性確認
-5. check_dns_records で SPF/DMARC 確認
-6. 全診断完了後、必ず report_finding で結果をまとめる
+4. check_dns_records で SPF/DMARC 確認
+5. 全診断完了後、必ず report_finding で結果をまとめる
 
 severity基準: critical=即悪用可能, high=容易に悪用可能, medium=条件次第, low=改善推奨, good=適切に設定済み
 スコア: 100点から critical-25, high-15, medium-8, low-3 で減点`;
@@ -24,7 +23,6 @@ async function executeTool(name: string, input: unknown): Promise<string> {
     case "fetch_headers": return executeFetchHeaders(i as { url: string; method?: string });
     case "fetch_page": return executeFetchPage(i as { url: string });
     case "check_path_exposure": return executeCheckPathExposure(i as { baseUrl: string; paths: string[] });
-    case "check_rate_limit": return executeCheckRateLimit(i as { url: string; attempts: number });
     case "check_dns_records": return executeCheckDnsRecords(i as { domain: string; recordType: string });
     case "report_finding": return JSON.stringify({ status: "received" });
     default: return JSON.stringify({ error: `Unknown tool: ${name}` });
