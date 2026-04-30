@@ -1,6 +1,6 @@
 ﻿import Anthropic from "@anthropic-ai/sdk";
 import { scannerTools } from "./tools";
-import { executeFetchHeaders, executeFetchPage, executeCheckPathExposure, executeCheckRateLimit, executeCheckDnsRecords } from "./tool-executors";
+import { executeFetchHeaders, executeFetchPage, executeCheckPathExposure, executeCheckDnsRecords } from "./tool-executors";
 import type { ScanResult, Finding, ScanProgress } from "./types";
 
 const client = new Anthropic({ apiKey: process.env.SCANNER_API_KEY });
