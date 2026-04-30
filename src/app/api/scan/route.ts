@@ -31,9 +31,7 @@ function validateDomain(domain: string): { valid: boolean; message?: string } {
 
 async function saveLead(email: string, domain: string, score: number, findingsCount: number, criticalCount: number, highCount: number, techStack: string[], summary: string, agreedMarketing: boolean) {
   await supabase.from("scan_leads").insert({
-    email,
-    domain,
-    score,
+    email, domain, score,
     findings_count: findingsCount,
     critical_count: criticalCount,
     high_count: highCount,
@@ -44,8 +42,9 @@ async function saveLead(email: string, domain: string, score: number, findingsCo
   });
 }
 
-async function sendResultEmail(email: string, domain: string, score: number, findingsCount: number, reportUrl: string) {
+async function sendResultEmail(email: string, domain: string, score: number, findingsCount: number) {
   const scoreColor = score >= 80 ? "#00e676" : score >= 50 ? "#ffd700" : "#ff3b3b";
+  const reportUrl = "https://securebank.co.jp/scan";
   await resend.emails.send({
     from: "SecureBank Scanner <scan@securebank.co.jp>",
     to: email,
@@ -97,17 +96,10 @@ export async function POST(request: NextRequest) {
         send("start", { domain, message: "診断を開始しました" });
         const result = await runScan(domain, { onProgress: (p) => send("progress", p) });
         send("complete", result);
-
         const criticalCount = result.findings.filter(f => f.severity === "critical").length;
         const highCount = result.findings.filter(f => f.severity === "high").length;
-        const reportUrl = `https://scan.securebank.co.jp/scan`;
-
-        // Supabaseに保存
         saveLead(email, domain, result.score, result.findings.length, criticalCount, highCount, result.techStack, result.summary, agreedMarketing).catch(console.error);
-
-        // メール送信
-        sendResultEmail(email, domain, result.score, result.findings.length, reportUrl).catch(console.error);
-
+        sendResultEmail(email, domain, result.score, result.findings.length).catch(console.error);
       } catch (err) {
         send("error", { message: err instanceof Error ? err.message : "エラーが発生しました" });
       } finally {
