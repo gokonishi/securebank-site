@@ -1,21 +1,60 @@
 ﻿import Anthropic from "@anthropic-ai/sdk";
 import { scannerTools } from "./tools";
-import { executeFetchHeaders, executeFetchPage, executeCheckPathExposure, executeCheckDnsRecords } from "./tool-executors";
+import { executeFetchHeaders, executeFetchPage, executeCheckPathExposure, executeCheckDnsRecords, executeCheckSubdomains, executeCheckCookieSecurity } from "./tool-executors";
 import type { ScanResult, Finding, ScanProgress } from "./types";
 
 const client = new Anthropic({ apiKey: process.env.SCANNER_API_KEY });
 
-const SYSTEM_PROMPT = `あなたはWebセキュリティの専門家です。与えられたドメインに対して、外部から観察可能なセキュリティ上の問題を診断します。
+const SYSTEM_PROMPT = `あなたはWebセキュリティの専門家です。与えられたドメインに対して、外部から観察可能なセキュリティ上の問題を徹底的に診断します。
 
 以下の順序でツールを使い、網羅的に診断してください：
-1. fetch_headers でHTTPヘッダーを確認（HSTS, CSP, X-Frame-Options等）
-2. check_path_exposure で管理パスの露出確認（/admin, /api, /.env, /.git 等）
-3. fetch_page で robots.txt と主要ページのコンテンツ確認
-4. check_dns_records で SPF/DMARC 確認
-5. 全診断完了後、必ず report_finding で結果をまとめる
 
-severity基準: critical=即悪用可能, high=容易に悪用可能, medium=条件次第, low=改善推奨, good=適切に設定済み
-スコア: 100点から critical-25, high-15, medium-8, low-3 で減点`;
+1. fetch_headers でHTTPヘッダーを確認
+   - HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
+   - Serverヘッダーによる技術情報露出
+   - wwwあり/なし両方確認
+
+2. check_path_exposure で機密パスの露出確認
+   - /admin, /administrator, /wp-admin, /wp-login.php
+   - /.env, /.git, /.git/config, /config, /backup
+   - /api, /api/v1, /api/admin, /graphql
+   - /phpinfo.php, /server-status, /actuator, /actuator/health
+   - /console, /dashboard, /manager
+
+3. fetch_page でコンテンツ確認
+   - robots.txt（内部パス情報の露出）
+   - メインページ（ログインフォーム、管理者キーワード、JSファイル参照）
+   - エラーページ（技術情報の露出）
+
+4. check_subdomains でサブドメイン探索
+   - dev, staging, test, demo, beta, admin, api, mail, smtp, ftp, vpn, remote, portal, old, backup
+
+5. check_cookie_security でCookieセキュリティ確認
+   - Secure属性, HttpOnly属性, SameSite属性
+
+6. check_dns_records でDNS/メール認証確認
+   - SPF（TXTレコード）
+   - DMARC（_dmarc.ドメイン のTXTレコード）
+   - MXレコード
+
+7. 全診断完了後、必ず report_finding で結果をまとめる
+
+## severity基準
+- critical: 即座に悪用可能（.envファイル公開、認証バイパス等）
+- high: 容易に悪用可能（HSTS/CSP未設定、ステージング環境露出等）
+- medium: 条件次第で悪用可能（X-Frame-Options未設定、Cookie属性不備等）
+- low: 改善推奨（Referrer-Policy未設定、robots.txt未設定等）
+- info: 情報提供のみ
+- good: 適切に設定されている（必ず良い点も報告する）
+
+## スコア計算
+100点スタート、critical -25点、high -15点、medium -8点、low -3点
+最低0点
+
+## 重要
+- 必ず良い点（good）も報告し、改善点と良い点のバランスを取る
+- 証拠（evidence）は具体的に記載する
+- 対策（recommendation）は実装可能な具体的内容にする`;
 
 async function executeTool(name: string, input: unknown): Promise<string> {
   const i = input as Record<string, unknown>;
@@ -24,6 +63,8 @@ async function executeTool(name: string, input: unknown): Promise<string> {
     case "fetch_page": return executeFetchPage(i as { url: string });
     case "check_path_exposure": return executeCheckPathExposure(i as { baseUrl: string; paths: string[] });
     case "check_dns_records": return executeCheckDnsRecords(i as { domain: string; recordType: string });
+    case "check_subdomains": return executeCheckSubdomains(i as { domain: string; subdomains: string[] });
+    case "check_cookie_security": return executeCheckCookieSecurity(i as { url: string });
     case "report_finding": return JSON.stringify({ status: "received" });
     default: return JSON.stringify({ error: `Unknown tool: ${name}` });
   }
@@ -49,10 +90,10 @@ export async function runScan(domain: string, options: { onProgress?: (p: ScanPr
 
   const messages: Anthropic.MessageParam[] = [{
     role: "user",
-    content: `診断対象: ${cleanDomain}\nベースURL: ${baseUrl}\n\n外部から観察可能なセキュリティ設定を網羅的に確認し、report_finding ツールで結果をまとめてください。`,
+    content: `診断対象: ${cleanDomain}\nベースURL: ${baseUrl}\n\n外部から観察可能なセキュリティ設定を徹底的に確認し、report_finding ツールで結果をまとめてください。良い点も必ず含めてください。`,
   }];
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 25; i++) {
     const response = await client.messages.create({
       model: "claude-sonnet-4-6",
       max_tokens: 4096,

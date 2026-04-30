@@ -37,27 +37,38 @@ export const scannerTools: Anthropic.Tool[] = [
     },
   },
   {
-    name: "check_rate_limit",
-    description: "指定エンドポイントに連続リクエストを送り、レートリミットが機能しているか確認する。",
-    input_schema: {
-      type: "object" as const,
-      properties: {
-        url: { type: "string" },
-        attempts: { type: "number" },
-      },
-      required: ["url", "attempts"],
-    },
-  },
-  {
     name: "check_dns_records",
     description: "DNSレコードを確認する。SPF/DMARC等のメール認証設定を診断する。",
     input_schema: {
       type: "object" as const,
       properties: {
         domain: { type: "string" },
-        recordType: { type: "string", enum: ["TXT", "MX", "NS", "A"] },
+        recordType: { type: "string", enum: ["TXT", "MX", "NS", "A", "CNAME"] },
       },
       required: ["domain", "recordType"],
+    },
+  },
+  {
+    name: "check_subdomains",
+    description: "よく使われるサブドメインが公開されていないか確認する。dev, staging, test, admin, api, mail等のサブドメインを確認する。",
+    input_schema: {
+      type: "object" as const,
+      properties: {
+        domain: { type: "string", description: "ベースドメイン（例: example.com）" },
+        subdomains: { type: "array", items: { type: "string" }, description: "確認するサブドメインのリスト" },
+      },
+      required: ["domain", "subdomains"],
+    },
+  },
+  {
+    name: "check_cookie_security",
+    description: "Webサイトのクッキーのセキュリティ属性（Secure, HttpOnly, SameSite）を確認する。",
+    input_schema: {
+      type: "object" as const,
+      properties: {
+        url: { type: "string", description: "確認するURL" },
+      },
+      required: ["url"],
     },
   },
   {

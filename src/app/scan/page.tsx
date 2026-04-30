@@ -92,8 +92,8 @@ function ResultView({ result }: { result: ScanResult }) {
       </div>
       <div style={{ border: "1px solid #ff8c0044", borderRadius: 8, padding: "24px 28px", background: "linear-gradient(135deg, #0d0800 0%, #1a0f00 100%)", textAlign: "center" }}>
         <div style={{ fontSize: 11, color: "#ff8c00", letterSpacing: 2, marginBottom: 8, fontFamily: "'DM Mono', monospace" }}>NEXT STEP</div>
-        <h3 style={{ color: "#fff", fontSize: 18, fontWeight: 600, margin: "0 0 10px" }}>より深い診断が必要ですか？</h3>
-        <p style={{ color: "#888", fontSize: 13, lineHeight: 1.7, margin: "0 0 20px" }}>本診断は外部から観察可能な設定のみを確認しています。<br />セキュアバンクの攻撃シミュレーションでは、実際の攻撃手法を用いた<br />より詳細なペネトレーションテストが可能です。</p>
+        <h3 style={{ color: "#fff", fontSize: 18, fontWeight: 600, margin: "0 0 10px" }}>外部診断では見えない脆弱性があります</h3>
+        <p style={{ color: "#888", fontSize: 13, lineHeight: 1.7, margin: "0 0 20px" }}>本診断はスコア100でも「外部から見える設定に問題なし」を意味するだけです。<br />実際の攻撃の87%はログイン後の内部領域で発生します。<br />セキュアバンクの攻撃シミュレーションでは、実際の攻撃手法で内部まで検証します。</p>
         <a href="https://securebank.co.jp/contact" style={{ display: "inline-block", background: "#ff8c00", color: "#000", fontWeight: 700, fontSize: 14, padding: "12px 32px", borderRadius: 4, textDecoration: "none", letterSpacing: 1 }}>攻撃シミュレーションを相談する →</a>
       </div>
     </div>

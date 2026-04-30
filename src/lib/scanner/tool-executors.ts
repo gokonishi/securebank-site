@@ -72,3 +72,59 @@ export async function executeCheckDnsRecords(input: { domain: string; recordType
     return JSON.stringify({ domain: input.domain, recordType: input.recordType, records });
   } catch (err) { return JSON.stringify({ error: String(err), domain: input.domain }); }
 }
+
+export async function executeCheckSubdomains(input: { domain: string; subdomains: string[] }): Promise<string> {
+  const results = await Promise.allSettled(
+    input.subdomains.slice(0, 20).map(async (sub) => {
+      const hostname = `${sub}.${input.domain}`;
+      const url = `https://${hostname}`;
+      try {
+        const res = await safeFetch(url, { method: "HEAD" });
+        return { subdomain: hostname, status: res.status, exposed: true, requiresAuth: res.status === 401 || res.status === 403 };
+      } catch {
+        // HTTP接続失敗 → DNS確認
+        try {
+          const dnsRes = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(hostname)}&type=A`, { headers: { Accept: "application/json" } });
+          const dnsData = await dnsRes.json();
+          const hasRecord = (dnsData.Answer || []).length > 0;
+          return { subdomain: hostname, status: 0, exposed: hasRecord, dnsExists: hasRecord };
+        } catch {
+          return { subdomain: hostname, status: 0, exposed: false };
+        }
+      }
+    })
+  );
+  return JSON.stringify({ domain: input.domain, subdomains: results.map((r) => r.status === "fulfilled" ? r.value : { error: "failed" }) });
+}
+
+export async function executeCheckCookieSecurity(input: { url: string }): Promise<string> {
+  try {
+    const res = await safeFetch(input.url, { method: "GET", redirect: "follow" });
+    const cookies: string[] = [];
+    res.headers.forEach((value, key) => {
+      if (key.toLowerCase() === "set-cookie") cookies.push(value);
+    });
+
+    const analysis = cookies.map(cookie => {
+      const parts = cookie.toLowerCase();
+      return {
+        raw: cookie,
+        hasSecure: parts.includes("secure"),
+        hasHttpOnly: parts.includes("httponly"),
+        hasSameSite: parts.includes("samesite"),
+        sameSiteValue: parts.includes("samesite=strict") ? "strict" : parts.includes("samesite=lax") ? "lax" : parts.includes("samesite=none") ? "none" : "not set",
+      };
+    });
+
+    return JSON.stringify({
+      url: input.url,
+      cookieCount: cookies.length,
+      cookies: analysis,
+      issues: {
+        missingSecure: analysis.filter(c => !c.hasSecure).length,
+        missingHttpOnly: analysis.filter(c => !c.hasHttpOnly).length,
+        missingSameSite: analysis.filter(c => !c.hasSameSite).length,
+      }
+    });
+  } catch (err) { return JSON.stringify({ error: String(err), url: input.url }); }
+}
