@@ -100,12 +100,74 @@ function ResultView({ result }: { result: ScanResult }) {
   );
 }
 
+type Step = "form" | "verify" | "scanning" | "result";
+
 export default function ScanPage() {
+  const [step, setStep] = useState<Step>("form");
   const [domain, setDomain] = useState("");
   const [email, setEmail] = useState("");
-  const [agreed, setAgreed] = useState(false);
-  const { isScanning, progress, result, error, startScan, reset } = useScanner();
-  const handleSubmit = () => { if (!domain || !email || !agreed) return; startScan(domain, email); };
+  const [code, setCode] = useState("");
+  const [agreedTerms, setAgreedTerms] = useState(false);
+  const [agreedMarketing, setAgreedMarketing] = useState(false);
+  const [sendingCode, setSendingCode] = useState(false);
+  const [verifying, setVerifying] = useState(false);
+  const [formError, setFormError] = useState("");
+  const { isScanning, progress, result, startScan, reset } = useScanner();
+
+  const handleSendCode = async () => {
+    setFormError("");
+    if (!domain) return setFormError("ドメインを入力してください");
+    if (!email) return setFormError("メールアドレスを入力してください");
+    if (!agreedTerms) return setFormError("利用規約への同意が必要です");
+    setSendingCode(true);
+    try {
+      const res = await fetch("/api/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "send", email }),
+      });
+      const data = await res.json();
+      if (!res.ok) return setFormError(data.error);
+      setStep("verify");
+    } catch {
+      setFormError("エラーが発生しました。もう一度お試しください");
+    } finally {
+      setSendingCode(false);
+    }
+  };
+
+  const handleVerify = async () => {
+    setFormError("");
+    if (!code) return setFormError("確認コードを入力してください");
+    setVerifying(true);
+    try {
+      const res = await fetch("/api/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "verify", email, code }),
+      });
+      const data = await res.json();
+      if (!res.ok) return setFormError(data.error);
+      setStep("scanning");
+      startScan(domain, email, agreedMarketing);
+    } catch {
+      setFormError("エラーが発生しました。もう一度お試しください");
+    } finally {
+      setVerifying(false);
+    }
+  };
+
+  const handleReset = () => {
+    setStep("form");
+    setDomain("");
+    setEmail("");
+    setCode("");
+    setAgreedTerms(false);
+    setAgreedMarketing(false);
+    setFormError("");
+    reset();
+  };
+
   return (
     <>
       <style>{`
@@ -120,33 +182,92 @@ export default function ScanPage() {
       `}</style>
       <div style={{ minHeight: "100vh", padding: "48px 24px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
+
           <div style={{ marginBottom: 48, display: "flex", alignItems: "center", gap: 16 }}>
             <img src="/logo.png" alt="SecureBank" style={{ height: 44, width: "auto" }} />
             <div style={{ fontSize: 10, color: "#555", letterSpacing: 2, fontFamily: "'DM Mono', monospace" }}>FREE SECURITY SCAN</div>
           </div>
-          {!result && !isScanning && (
+
+          {/* STEP 1: 入力フォーム */}
+          {step === "form" && (
             <div style={{ animation: "fadeIn 0.5s ease" }}>
               <h1 style={{ fontSize: 42, fontWeight: 800, lineHeight: 1.1, marginBottom: 16 }}>あなたのサイトの<br /><span style={{ color: "#ff8c00" }}>脆弱性</span>を無料診断</h1>
               <p style={{ color: "#666", fontSize: 15, lineHeight: 1.7, marginBottom: 40 }}>ドメインを入力するだけで、外部から観察可能なセキュリティ設定を<br />AIが自動診断します。診断結果はメールでもお送りします。</p>
-              <div style={{ border: "1px solid #1a1a1a", borderRadius: 8, padding: "32px", background: "#0d0d0d" }}>
+
+              <div style={{ border: "1px solid #1a1a1a", borderRadius: 8, padding: "32px", background: "#0d0d0d", marginBottom: 16 }}>
                 <div style={{ marginBottom: 20 }}>
-                  <label style={{ fontSize: 11, color: "#555", letterSpacing: 2, display: "block", marginBottom: 8, fontFamily: "'DM Mono', monospace" }}>DOMAIN</label>
+                  <label style={{ fontSize: 11, color: "#aaa", letterSpacing: 2, display: "block", marginBottom: 8, fontFamily: "'DM Mono', monospace" }}>DOMAIN</label>
                   <input value={domain} onChange={e => setDomain(e.target.value)} placeholder="example.com" style={{ width: "100%", background: "#080808", border: "1px solid #222", borderRadius: 4, padding: "12px 16px", color: "#fff", fontSize: 16, fontFamily: "'DM Mono', monospace" }} />
                 </div>
                 <div style={{ marginBottom: 24 }}>
-                  <label style={{ fontSize: 11, color: "#555", letterSpacing: 2, display: "block", marginBottom: 8, fontFamily: "'DM Mono', monospace" }}>EMAIL</label>
+                  <label style={{ fontSize: 11, color: "#aaa", letterSpacing: 2, display: "block", marginBottom: 8, fontFamily: "'DM Mono', monospace" }}>EMAIL</label>
                   <input value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" type="email" style={{ width: "100%", background: "#080808", border: "1px solid #222", borderRadius: 4, padding: "12px 16px", color: "#fff", fontSize: 14, fontFamily: "'DM Mono', monospace" }} />
+                  <p style={{ fontSize: 11, color: "#888", marginTop: 6 }}>確認コードを送信します。受信可能なメールアドレスを入力してください。</p>
                 </div>
-                <label style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 24, cursor: "pointer" }}>
-                  <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} style={{ marginTop: 2, accentColor: "#ff8c00" }} />
-                  <span style={{ fontSize: 12, color: "#555", lineHeight: 1.6 }}>診断対象のドメインを自分が所有・管理していることを確認しました。第三者のサイトへの無断診断は禁止します。</span>
+
+                {/* 注意書き */}
+                <div style={{ background: "#0d0d00", border: "1px solid #666600", borderRadius: 6, padding: "14px 16px", marginBottom: 20 }}>
+                  <div style={{ fontSize: 11, color: "#cccc00", letterSpacing: 1, marginBottom: 8, fontFamily: "'DM Mono', monospace" }}>⚠ 診断に関する注意事項</div>
+                  <ul style={{ color: "#bbb", fontSize: 12, lineHeight: 1.8, paddingLeft: 16 }}>
+                    <li>本診断は外部から観察可能な設定のみを確認します</li>
+                    <li>診断時のアクセスログが対象サーバーに記録される場合があります</li>
+                    <li>診断結果の正確性・完全性を保証するものではありません</li>
+                    <li>本診断により生じたいかなる損害についても当社は責任を負いません</li>
+                    <li>第三者が所有・管理するサイトへの無断診断は禁止します</li>
+                  </ul>
+                </div>
+
+                {/* 利用規約同意 */}
+                <label style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 12, cursor: "pointer" }}>
+                  <input type="checkbox" checked={agreedTerms} onChange={e => setAgreedTerms(e.target.checked)} style={{ marginTop: 2, accentColor: "#ff8c00" }} />
+                  <span style={{ fontSize: 12, color: "#ccc", lineHeight: 1.6 }}>上記注意事項を理解し、診断対象のドメインを自分が所有・管理していることを確認しました。
+                  </span>
                 </label>
-                <button onClick={handleSubmit} disabled={!domain || !email || !agreed} style={{ width: "100%", padding: "14px", background: domain && email && agreed ? "#ff8c00" : "#1a1a1a", color: domain && email && agreed ? "#000" : "#444", border: "none", borderRadius: 4, fontSize: 14, fontWeight: 700, cursor: domain && email && agreed ? "pointer" : "not-allowed", letterSpacing: 1, transition: "all 0.2s" }}>無料診断を開始する →</button>
+
+                {/* 営業メール同意（任意） */}
+                <label style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 24, cursor: "pointer" }}>
+                  <input type="checkbox" checked={agreedMarketing} onChange={e => setAgreedMarketing(e.target.checked)} style={{ marginTop: 2, accentColor: "#ff8c00" }} />
+                  <span style={{ fontSize: 12, color: "#aaa", lineHeight: 1.6 }}>【任意】診断結果に基づく改善提案をメールで受け取る
+                  </span>
+                </label>
+
+                {formError && <p style={{ color: "#ff3b3b", fontSize: 12, marginBottom: 16 }}>{formError}</p>}
+
+                <button onClick={handleSendCode} disabled={sendingCode || !domain || !email || !agreedTerms} style={{ width: "100%", padding: "14px", background: !sendingCode && domain && email && agreedTerms ? "#ff8c00" : "#1a1a1a", color: !sendingCode && domain && email && agreedTerms ? "#000" : "#444", border: "none", borderRadius: 4, fontSize: 14, fontWeight: 700, cursor: !sendingCode && domain && email && agreedTerms ? "pointer" : "not-allowed", letterSpacing: 1, transition: "all 0.2s" }}>
+                  {sendingCode ? "送信中..." : "確認コードを送信する →"}
+                </button>
               </div>
-              <p style={{ textAlign: "center", fontSize: 11, color: "#333", marginTop: 20, fontFamily: "'DM Mono', monospace" }}>診断所要時間: 約1〜2分 · 完全無料 · クレジットカード不要</p>
+              <p style={{ textAlign: "center", fontSize: 11, color: "#333", fontFamily: "'DM Mono', monospace" }}>診断所要時間: 約1〜2分 · 完全無料 · クレジットカード不要</p>
             </div>
           )}
-          {isScanning && (
+
+          {/* STEP 2: メール認証 */}
+          {step === "verify" && (
+            <div style={{ animation: "fadeIn 0.5s ease" }}>
+              <h2 style={{ fontSize: 28, fontWeight: 800, marginBottom: 12 }}>メールを確認してください</h2>
+              <p style={{ color: "#666", fontSize: 15, lineHeight: 1.7, marginBottom: 40 }}><span style={{ color: "#ff8c00" }}>{email}</span> に確認コードを送信しました。<br />届いた6桁のコードを入力してください。</p>
+
+              <div style={{ border: "1px solid #1a1a1a", borderRadius: 8, padding: "32px", background: "#0d0d0d" }}>
+                <div style={{ marginBottom: 24 }}>
+                  <label style={{ fontSize: 11, color: "#aaa", letterSpacing: 2, display: "block", marginBottom: 8, fontFamily: "'DM Mono', monospace" }}>確認コード（6桁）</label>
+                  <input value={code} onChange={e => setCode(e.target.value)} placeholder="123456" maxLength={6} style={{ width: "100%", background: "#080808", border: "1px solid #222", borderRadius: 4, padding: "16px", color: "#fff", fontSize: 32, fontFamily: "'DM Mono', monospace", textAlign: "center", letterSpacing: 8 }} />
+                </div>
+
+                {formError && <p style={{ color: "#ff3b3b", fontSize: 12, marginBottom: 16 }}>{formError}</p>}
+
+                <button onClick={handleVerify} disabled={verifying || code.length !== 6} style={{ width: "100%", padding: "14px", background: !verifying && code.length === 6 ? "#ff8c00" : "#1a1a1a", color: !verifying && code.length === 6 ? "#000" : "#444", border: "none", borderRadius: 4, fontSize: 14, fontWeight: 700, cursor: !verifying && code.length === 6 ? "pointer" : "not-allowed", letterSpacing: 1, marginBottom: 16 }}>
+                  {verifying ? "確認中..." : "診断を開始する →"}
+                </button>
+
+                <button onClick={() => { setStep("form"); setCode(""); setFormError(""); }} style={{ width: "100%", padding: "10px", background: "transparent", border: "1px solid #222", color: "#555", borderRadius: 4, fontSize: 12, cursor: "pointer" }}>
+                  戻る
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* STEP 3: スキャン中 */}
+          {(step === "scanning" && isScanning) && (
             <div style={{ animation: "fadeIn 0.3s ease" }}>
               <div style={{ border: "1px solid #1a1a1a", borderRadius: 8, padding: "40px 32px", background: "#0d0d0d", marginBottom: 24, textAlign: "center" }}>
                 <div style={{ width: 80, height: 80, borderRadius: "50%", border: "1px solid #222", position: "relative", margin: "0 auto 28px", overflow: "hidden" }}>
@@ -168,20 +289,17 @@ export default function ScanPage() {
               </div>
             </div>
           )}
-          {error && (
-            <div style={{ border: "1px solid #ff3b3b44", borderRadius: 8, padding: "20px 24px", background: "#1a0000", marginBottom: 24 }}>
-              <div style={{ color: "#ff3b3b", fontSize: 13, marginBottom: 12 }}>{error}</div>
-              <button onClick={reset} style={{ background: "transparent", border: "1px solid #333", color: "#888", padding: "8px 16px", borderRadius: 4, cursor: "pointer", fontSize: 12 }}>やり直す</button>
-            </div>
-          )}
+
+          {/* STEP 4: 結果 */}
           {result && (
             <>
               <ResultView result={result} />
               <div style={{ textAlign: "center", marginTop: 24 }}>
-                <button onClick={reset} style={{ background: "transparent", border: "1px solid #222", color: "#555", padding: "10px 24px", borderRadius: 4, cursor: "pointer", fontSize: 12, fontFamily: "'DM Mono', monospace" }}>別のドメインを診断する</button>
+                <button onClick={handleReset} style={{ background: "transparent", border: "1px solid #222", color: "#555", padding: "10px 24px", borderRadius: 4, cursor: "pointer", fontSize: 12, fontFamily: "'DM Mono', monospace" }}>別のドメインを診断する</button>
               </div>
             </>
           )}
+
         </div>
       </div>
     </>

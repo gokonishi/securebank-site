@@ -64,20 +64,6 @@ export async function executeCheckPathExposure(input: { baseUrl: string; paths: 
   return JSON.stringify({ baseUrl: input.baseUrl, paths: results.map((r) => r.status === "fulfilled" ? r.value : { error: "failed" }) });
 }
 
-export async function executeCheckRateLimit(input: { url: string; attempts: number }): Promise<string> {
-  const count = Math.min(input.attempts, 10);
-  const results = [];
-  for (let i = 0; i < count; i++) {
-    try {
-      const res = await safeFetch(input.url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password: `wrong_${i}` }) });
-      results.push({ attempt: i + 1, status: res.status });
-      if (res.status === 429) return JSON.stringify({ url: input.url, rateLimitDetected: true, blockedAtAttempt: i + 1, results });
-    } catch { results.push({ attempt: i + 1, status: 0 }); break; }
-    await new Promise((r) => setTimeout(r, 200));
-  }
-  return JSON.stringify({ url: input.url, rateLimitDetected: false, totalAttempts: results.length, results });
-}
-
 export async function executeCheckDnsRecords(input: { domain: string; recordType: string }): Promise<string> {
   try {
     const res = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(input.domain)}&type=${input.recordType}`, { headers: { Accept: "application/json" } });

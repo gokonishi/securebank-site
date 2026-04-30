@@ -29,7 +29,7 @@ function validateDomain(domain: string): { valid: boolean; message?: string } {
   return { valid: true };
 }
 
-async function saveLead(email: string, domain: string, score: number, findingsCount: number, criticalCount: number, highCount: number, techStack: string[], summary: string) {
+async function saveLead(email: string, domain: string, score: number, findingsCount: number, criticalCount: number, highCount: number, techStack: string[], summary: string, agreedMarketing: boolean) {
   await supabase.from("scan_leads").insert({
     email,
     domain,
@@ -39,6 +39,7 @@ async function saveLead(email: string, domain: string, score: number, findingsCo
     high_count: highCount,
     tech_stack: techStack,
     summary,
+    agreed_marketing: agreedMarketing,
     scanned_at: new Date().toISOString(),
   });
 }
@@ -83,7 +84,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => null);
   if (!body) return new Response(JSON.stringify({ error: "リクエストの形式が正しくありません" }), { status: 400 });
 
-  const { domain, email } = body;
+  const { domain, email, agreedMarketing = false } = body;
   const domainCheck = validateDomain(domain);
   if (!domainCheck.valid) return new Response(JSON.stringify({ error: domainCheck.message }), { status: 400 });
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return new Response(JSON.stringify({ error: "有効なメールアドレスを入力してください" }), { status: 400 });
@@ -102,7 +103,7 @@ export async function POST(request: NextRequest) {
         const reportUrl = `https://scan.securebank.co.jp/scan`;
 
         // Supabaseに保存
-        saveLead(email, domain, result.score, result.findings.length, criticalCount, highCount, result.techStack, result.summary).catch(console.error);
+        saveLead(email, domain, result.score, result.findings.length, criticalCount, highCount, result.techStack, result.summary, agreedMarketing).catch(console.error);
 
         // メール送信
         sendResultEmail(email, domain, result.score, result.findings.length, reportUrl).catch(console.error);

@@ -15,14 +15,14 @@ export function useScanner() {
     setError(null);
   }, []);
 
-  const startScan = useCallback(async (domain: string, email: string) => {
+  const startScan = useCallback(async (domain: string, email: string, agreedMarketing: boolean = false) => {
     reset();
     setIsScanning(true);
     try {
       const response = await fetch("/api/scan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ domain, email }),
+        body: JSON.stringify({ domain, email, agreedMarketing }),
       });
       if (!response.ok) {
         const d = await response.json();
